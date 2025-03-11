@@ -26,7 +26,7 @@ cd exploration-space
 ```
 ## **start the server**
 ```bash
-git artisan serve
+php artisan serve
 ```
 Then connect to it: http://localhost:8000 !
 
