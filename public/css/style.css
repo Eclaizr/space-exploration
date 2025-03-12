@@ -19,7 +19,7 @@ body {
     text-align: center;
 }
 
-/* ✨ Titre */
+/* Titre */
 h2 {
     margin-bottom: 20px;
     font-size: 24px;
@@ -115,15 +115,6 @@ button:hover {
     background: rgba(0, 0, 0, 0.5); /* Opacité */
 }
 
-/* Contenu au-dessus de la vidéo */
-.content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-}
+
+
 
