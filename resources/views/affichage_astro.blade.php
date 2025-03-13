@@ -19,6 +19,7 @@
 <main>
     <div class="id">
         <h1>Fichier d'identité</h1>
+        <img src="">
         <p>Numéro d'identification: {{$Astronaute->idAstro}}</p>
         <p>Prenom: {{$Astronaute->idAstro}}</p>
         <p>Nom: {{ $Astronaute->name }}</p>
@@ -26,11 +27,11 @@
         <p>Statut : {{$Astronaute->statut}}</p>
     </div>
     <div class="Missions">
-        
+
 
     </div>
 
-</main>
+    </main>
 
 <footer>
 </footer>
