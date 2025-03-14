@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Missionspatiale
- * 
+ *
  * @property int $idMission
  * @property string $nomMission
  * @property Carbon|null $dateDepart
@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property bool $estHabitee
  * @property string $statut
  * @property int $idVaisseau
- * 
+ *
  * @property Vaisseauspatial $vaisseauspatial
  * @property Collection|Experimente[] $experimentes
  * @property Collection|MissionAttribution[] $mission_attributions
@@ -52,7 +52,12 @@ class Missionspatiale extends Model
 		'idVaisseau'
 	];
 
-	public function vaisseauspatial()
+    public static function select(array $columns = ['*'])
+    {
+        return self::query()->select($columns);
+    }
+
+    public function vaisseauspatial()
 	{
 		return $this->belongsTo(Vaisseauspatial::class, 'idVaisseau');
 	}
