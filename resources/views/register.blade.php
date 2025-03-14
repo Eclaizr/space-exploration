@@ -23,6 +23,13 @@
     <!-- Formulaire d'enregistrement -->
     <div class="login-container">
         <h2>Créer un compte</h2>
+
+        @if (session('success'))
+            <div class="alert alert-success" style="color: red;">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="form-group">
@@ -61,16 +68,5 @@
         </form>
     </div>
 
-    <script>
-        // Afficher ou masquer le champ spécialité en fonction du rôle sélectionné
-        document.getElementById('role').addEventListener('change', function() {
-            var role = this.value;
-            if (role === 'chercheur') {
-                document.getElementById('specialiteField').style.display = 'block';
-            } else {
-                document.getElementById('specialiteField').style.display = 'none';
-            }
-        });
-    </script>
-</body>
-</html>
+    </body>
+    </html>

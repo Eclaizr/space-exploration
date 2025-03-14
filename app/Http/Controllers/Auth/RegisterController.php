@@ -36,7 +36,7 @@ class RegisterController extends Controller
         $login->role = $request->role;
         $login->save();
 
-        // Rediriger vers la page de bienvenue avec un message de succès
-        return redirect()->route('welcome')->with('success', 'Votre compte a été créé avec succès !');
+        // Rediriger vers la page d'enregistrement avec un message de succès
+        return redirect()->route('register')->with('success', 'Utilisateur créé, vous pouvez maintenant vous connecter.');
     }
 }
