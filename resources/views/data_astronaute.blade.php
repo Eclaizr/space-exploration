@@ -12,6 +12,8 @@
 
 <h1>Liste des Missions des Astronautes</h1>
 
+@include('affichage_astro')
+
 <!-- Filtre pour sélectionner le type de mission -->
 <label for="filter">Filtrer les missions :</label>
 <select id="filter">
