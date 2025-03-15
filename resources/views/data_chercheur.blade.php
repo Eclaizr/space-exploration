@@ -29,6 +29,12 @@
             <label for="filterAgency" class="form-label">Agence Découvreuse</label>
             <select id="filterAgency" class="form-control">
                 <option value="">Toutes les agences</option>
+                <option value="csna">CSNA</option>
+                <option value="esa">ESA</option>
+                <option value="isro">ISRO</option>
+                <option value="jaxa">JAXA</option>
+                <option value="nasa">NASA</option>
+                <option value="rocosmos">Rocosmos</option>
             </select>
         </div>
     </div>
