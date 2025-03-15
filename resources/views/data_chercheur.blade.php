@@ -41,7 +41,7 @@
             <th>Distance de la Terre (UA)</th>
             <th>Révolution (jours)</th>
             <th>Année de Découverte</th>
-            <th>Agence Découvreuse</th>
+            <th>Agence</th>
         </tr>
         </thead>
         <tbody></tbody>
