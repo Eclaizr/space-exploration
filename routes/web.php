@@ -17,9 +17,8 @@ use App\Http\Controllers\dataAstro;
 Route::get('/data_astronaute', [DataAstro::class, 'index'])->name('data_astronaute');
 Route::get('/data_astronaute/data', [DataAstro::class, 'getMissions'])->name('data');
 
-use App\Http\Controllers\dataChercheur_Discover;
+use App\Http\Controllers\ObjetsDecouvertsController;
 
-
-Route::get('/objets-decouverts', [dataChercheur_Discover::class, 'index'])->name('objets.index');
-Route::get('/objets-decouverts/data', [dataChercheur_Discover::class, 'getObjetsExplores'])->name('objets.data');
-Route::get('/objets-decouverts/filters', [dataChercheur_Discover::class, 'getFilters'])->name('objets.filters');
+Route::get('/objets', [ObjetsDecouvertsController::class, 'index'])->name('object_discovered.index');
+Route::get('/objets/data', [ObjetsDecouvertsController::class, 'getObjetsExplores'])->name('object_discovered.data');
+Route::get('/objets/filters', [ObjetsDecouvertsController::class, 'getFilters'])->name('object_discovered.filters');
