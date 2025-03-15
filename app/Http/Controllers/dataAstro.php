@@ -39,7 +39,7 @@ class dataAstro extends Controller
                 $query->where('dateDepart', '>', now()); // Future missions
             }
 
-            return response()->json(DataTables::of($query)->make());
+            return DataTables::of($query)->make(true);
         }
 
         return response()->json(['error' => 'Invalid request'], 400);

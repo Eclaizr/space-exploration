@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 </head>
 <body>
+
+@include("affichage_astro")
+
 <div class="container">
     <h2>Liste des Missions</h2>
     <label for="filter">Filtrer par:</label>
