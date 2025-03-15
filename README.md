@@ -1,4 +1,29 @@
-# Space exploration 🚀
+use Yajra\DataTables\Facades\DataTables;
+
+public function getMissions(Request $request)
+{
+    if ($request->ajax()) {
+        $query = Missionspatiale::select([
+            'idMission',
+            'nomMission',
+            'dateDepart',
+            'dateRetour',
+            'objectif',
+            'estHabitee',
+            'statut',
+            'idVaisseau'
+        ]);
+
+        // Apply the filter if selected
+        if ($request->filter == 'past') {
+            $query->where('dateRetour', '<', now()); // Past missions
+        } elseif ($request->filter == 'future') {
+            $query->where('dateDepart', '>', now()); // Future missions
+        }
+
+        return DataTables::of($query)->make(true);
+    }
+}# Space exploration 🚀
 
 /!\ NOT FINISHED /!\
 
