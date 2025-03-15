@@ -30,6 +30,11 @@
     font-size: 24px;
 }
 
+.menu-bar h1 a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit the color from the parent element */
+}
+
 /* Navigation */
 .nav-links {
     display: flex;

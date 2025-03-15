@@ -1,22 +1,15 @@
 <?php
+// filepath: c:\Users\clair\Desktop\space-exploration\routes\web.php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\AstroController;
+use App\Http\Controllers\Auth\LoginController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome'); // Add the name here
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 
-// routes for login
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-
-// routes for register
+// Routes pour l'enregistrement
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-// Protège la route avec 'auth' si nécessaire
-Route::middleware('auth')->group(function () {
-    Route::get('/affichage_astro', [AstroController::class, 'showProfile'])->name('profil');
-});
+// Routes pour la connexion
+Route::post('/login', [LoginController::class, 'login']);

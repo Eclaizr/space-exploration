@@ -1,4 +1,5 @@
 <?php
+// filepath: c:\Users\clair\Desktop\space-exploration\app\Http\Controllers\Auth\RegisterController.php
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -36,7 +37,7 @@ class RegisterController extends Controller
         $login->role = $request->role;
         $login->save();
 
-        // Rediriger vers la page d'enregistrement avec un message de succès
-        return redirect()->route('register')->with('success', 'Utilisateur créé, vous pouvez maintenant vous connecter.');
+        // Rediriger vers la page de connexion avec un message de succès
+        return redirect()->route('login')->with('success', 'Utilisateur créé, vous pouvez maintenant vous connecter.');
     }
 }

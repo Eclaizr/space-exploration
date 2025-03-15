@@ -19,6 +19,10 @@
     flex-wrap: nowrap;
     justify-content: space-around;
 }
+.menu-bar h1 a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit the color from the parent element */
+}
 
 /* Titre du menu */
 .menu-bar h1 {

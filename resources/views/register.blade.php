@@ -8,14 +8,14 @@
 </head>
 <body>
     <header class="menu-bar">
-        <h1>Space Exploration</h1>
+        <h1><a href="{{ route('login') }}">Space Exploration</a></h1> <!-- Lien vers la page d'accueil -->
 
         <!-- Menu Burger pour mobile -->
         <div class="burger-menu" onclick="toggleMenu()">☰</div>
 
         <!-- Navigation -->
         <nav class="nav-links">
-            <a href="{{ route('login') }}" class="nav-button">Sign In</a>
+            <a href="{{ route('login') }}" class="nav-button">Sign In</a> <!-- Lien vers la page d'accueil -->
             <a href="{{ route('register') }}" class="nav-button active">Sign Up</a>
         </nav>
     </header>
@@ -68,5 +68,5 @@
         </form>
     </div>
 
-    </body>
-    </html>
+</body>
+</html>
