@@ -15,6 +15,7 @@ Route::post('/login', [LoginController::class, 'login']);
 // routes for register
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+
 // Protège la route avec 'auth' si nécessaire
 Route::middleware('auth')->group(function () {
     Route::get('/affichage_astro', [AstroController::class, 'showProfile'])->name('profil');
