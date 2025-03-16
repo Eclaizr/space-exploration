@@ -6,9 +6,8 @@ use App\Http\Middleware\CheckChercheur;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\dataAstro;
-use App\Http\Controllers\dataChercheur;
+use App\Http\Controllers\DataCher;
 use App\Http\Controllers\dataGestionnaire;
 
 // Route pour afficher la page d'accueil
@@ -37,15 +36,19 @@ Route::middleware(['isAstronaute'=>CheckAstronaute::class])->group( function (){
     Route::get('/dataAstronaute', [DataAstro::class, 'index'])->name('dataAstronaute');
     Route::get('/dataAstronaute/data', [DataAstro::class, 'getMissions'])->name('data');
     Route::get('/dataAstronaute/liste', [DataAstro::class, 'getAstronautes'])->name('liste');
-    
+
 });
 
 Route::get('/affichageGestionnaire', [DataGestionnaire::class, 'index'])->name('affichageGestionnaire');
 
-use App\Http\Controllers\dataChercheur_Discover;
 
-Route::middleware(['isChercheur'=>CheckChercheur::class])->group( function (){
-    Route::get('/objets-decouverts', [dataChercheur_Discover::class, 'index'])->name('objets.index');
-    Route::get('/objets-decouverts/data', [dataChercheur_Discover::class, 'getObjetsExplores'])->name('objets.data');
-    Route::get('/objets-decouverts/filters', [dataChercheur_Discover::class, 'getFilters'])->name('objets.filters');
+Route::middleware(['isChercheur' => CheckChercheur::class])->group(function () {
+    Route::get('/objets-decouverts', [DataCher::class, 'index'])->name('objets.index');
+    Route::get('/objets-decouverts/data', [DataCher::class, 'getObjetsDecouverts'])->name('objets.data');
+    Route::get('/objets-decouverts/filters', [DataCher::class, 'getFilters'])->name('objets.filters');
+    Route::get('/missions-non-habitees', [DataCher::class, 'getMissionsNonHabitees'])->name('missions.non_habitees');
+    Route::get('/missions-habitees', [DataCher::class, 'getMissionsHabitees'])->name('missions.habitees');
+    Route::get('/planetes-habitables', [DataCher::class, 'getPlanetesHabitables'])->name('planetes.habitables');
+    Route::get('/experiences-scientifiques', [DataCher::class, 'getExperiences'])->name('experiences.scientifiques');
 });
+
