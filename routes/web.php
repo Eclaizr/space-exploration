@@ -6,9 +6,8 @@ use App\Http\Middleware\CheckChercheur;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\dataAstro;
-use App\Http\Controllers\dataChercheur;
+use App\Http\Controllers\DataCher;
 use App\Http\Controllers\dataGestionnaire;
 
 // Route pour afficher la page d'accueil
@@ -33,19 +32,25 @@ Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('dashboard
 // Route::get('/dataAstronaute', [dataAstro::class, 'index'])->name('dataAstronaute')->middleware('role:astronaute,gestionnaire');
 // Route::get('/dataChercheur', [dataChercheur::class, 'index'])->name('dataChercheur')->middleware('role:chercheur');
 // Route::get('/dataGestionnaire', [dataGestionnaire::class, 'index'])->name('dataGestionnaire')->middleware('role:gestionnaire');
-Route::middleware(['isAstronaute'=>CheckAstronaute::class])->group( function (){
+
+
+Route::middleware(['role:astronaute'=>CheckAstronaute::class])->group(function () {
     Route::get('/dataAstronaute', [DataAstro::class, 'index'])->name('dataAstronaute');
     Route::get('/dataAstronaute/data', [DataAstro::class, 'getMissions'])->name('data');
     Route::get('/dataAstronaute/liste', [DataAstro::class, 'getAstronautes'])->name('liste');
-    
 });
 
-Route::get('/affichageGestionnaire', [DataGestionnaire::class, 'index'])->name('affichageGestionnaire');
-
-use App\Http\Controllers\dataChercheur_Discover;
-
-Route::middleware(['isChercheur'=>CheckChercheur::class])->group( function (){
-    Route::get('/objets-decouverts', [dataChercheur_Discover::class, 'index'])->name('objets.index');
-    Route::get('/objets-decouverts/data', [dataChercheur_Discover::class, 'getObjetsExplores'])->name('objets.data');
-    Route::get('/objets-decouverts/filters', [dataChercheur_Discover::class, 'getFilters'])->name('objets.filters');
+Route::middleware(['role:chercheur'=>CheckChercheur::class])->group(function () {
+    Route::get('/dataChercheur', [DataCher::class, 'index'])->name('dataChercheur');
+    Route::get('/objets-decouverts/data', [DataCher::class, 'getObjetsDecouverts'])->name('dataChercheur');
+    Route::get('/objets-decouverts/filters', [DataCher::class, 'getFilters'])->name('objets.filters');
+    Route::get('/missions-non-habitees', [DataCher::class, 'getMissionsNonHabitees'])->name('missions_non_habitees');
+    Route::get('/missions-habitees', [DataCher::class, 'getMissionsHabitees'])->name('missions_habitees');
+    Route::get('/planetes-habitables', [DataCher::class, 'getPlanetesHabitables'])->name('planetes_habitables');
+    Route::get('/experiences-scientifiques', [DataCher::class, 'getExperiences'])->name('experiences_scientifiques');
 });
+
+Route::middleware(['role:gestionnaire'])->group(function () {
+    Route::get('/affichageGestionnaire', [DataGestionnaire::class, 'index'])->name('affichageGestionnaire');
+});
+

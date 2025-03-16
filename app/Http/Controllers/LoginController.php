@@ -1,16 +1,10 @@
 <?php
-// filepath: c:\Users\clair\Desktop\space-exploration\app\Http\Controllers\LoginController.php
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Authentification;
-use App\Models\Login;
 use App\Models\VueMissionsAstronaute;
-use App\Models\VueAstronauteAgence;
-use App\Models\VueObjetsDecouvert;
 use App\Models\VueGestionnaireMission;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
 
@@ -27,13 +21,14 @@ class LoginController extends Controller
         $credentials = $request->validated();
 
         // on va verifier ces infos
-        if(Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            $role = Auth::user()->role;
-            return $this->redirectToDashboard($role);
+            $user = Auth::user();
+            if ($user && isset($user->role)) {
+                return $this->redirectToDashboard($user->role);
+            }
         }
         return to_route('auth.login')->with('error', 'Login ou mot de passe incorrect');
-        
     }
 
     public function logout()
@@ -42,13 +37,12 @@ class LoginController extends Controller
         return to_route('auth.login');
     }
 
-//return $this->redirectToDashboard($request);
     protected function redirectToDashboard($role)
     {
         if ($role == 'astronaute') {
             return redirect()->route('dataAstronaute');
         } elseif ($role == 'chercheur') {
-            return redirect()->route('objets.index');
+            return redirect()->route('dataChercheur');
         } else {
             return redirect()->route('affichageGestionnaire');
         }
@@ -58,17 +52,19 @@ class LoginController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->role == 'astronaute') {
-            $missions = VueMissionsAstronaute::all();
-            return view('dataAstronaute', compact('missions'));
-        } elseif ($user->role == 'chercheur') {
-            $objetsCelestes = VueObjetsDecouvert::all();
-            return view('objets.index', compact('objetsCelestes'));
-        } else {
-            $missions = VueGestionnaireMission::all();
-            return view('affichageGestionnaire', compact('missions'));
+        if ($user && isset($user->role)) {
+            if ($user->role == 'astronaute') {
+                $missions = VueMissionsAstronaute::all();
+                return view('dataAstronaute', compact('missions'));
+            } elseif ($user->role == 'chercheur') {
+                $objetsCelestes = app(DataCher::class)->getObjetsDecouverts()->getData();
+                return view('dataChercheur', compact('objetsCelestes'));
+            } else {
+                $missions = VueGestionnaireMission::all();
+                return view('affichageGestionnaire', compact('missions'));
+            }
         }
+
+        return to_route('auth.login')->with('error', 'User not authenticated or role not found');
     }
-
-
 }
