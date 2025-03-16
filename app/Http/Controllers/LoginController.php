@@ -42,7 +42,7 @@ class LoginController extends Controller
         if ($role == 'astronaute') {
             return redirect()->route('dataAstronaute');
         } elseif ($role == 'chercheur') {
-            return redirect()->route('dataChercheur');
+            return redirect()->route('data_chercheur');
         } else {
             return redirect()->route('affichageGestionnaire');
         }
@@ -58,7 +58,7 @@ class LoginController extends Controller
                 return view('dataAstronaute', compact('missions'));
             } elseif ($user->role == 'chercheur') {
                 $objetsCelestes = app(DataCher::class)->getObjetsDecouverts()->getData();
-                return view('dataChercheur', compact('objetsCelestes'));
+                return view('data_chercheur', compact('objetsCelestes'));
             } else {
                 $missions = VueGestionnaireMission::all();
                 return view('affichageGestionnaire', compact('missions'));

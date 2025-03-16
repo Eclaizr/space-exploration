@@ -40,14 +40,8 @@ Route::middleware(['role:astronaute'=>CheckAstronaute::class])->group(function (
     Route::get('/dataAstronaute/liste', [DataAstro::class, 'getAstronautes'])->name('liste');
 });
 
-Route::middleware(['role:chercheur'=>CheckChercheur::class])->group(function () {
-    Route::get('/dataChercheur', [DataCher::class, 'index'])->name('dataChercheur');
-    Route::get('/objets-decouverts/data', [DataCher::class, 'getObjetsDecouverts'])->name('dataChercheur');
-    Route::get('/objets-decouverts/filters', [DataCher::class, 'getFilters'])->name('objets.filters');
-    Route::get('/missions-non-habitees', [DataCher::class, 'getMissionsNonHabitees'])->name('missions_non_habitees');
-    Route::get('/missions-habitees', [DataCher::class, 'getMissionsHabitees'])->name('missions_habitees');
-    Route::get('/planetes-habitables', [DataCher::class, 'getPlanetesHabitables'])->name('planetes_habitables');
-    Route::get('/experiences-scientifiques', [DataCher::class, 'getExperiences'])->name('experiences_scientifiques');
+Route::middleware(['role:chercheur' => CheckChercheur::class])->group(function () {
+    Route::get('/data_chercheur', [DataCher::class, 'index'])->name('data_chercheur');
 });
 
 Route::middleware(['role:gestionnaire'])->group(function () {

@@ -1,32 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Données de Recherche</title>
-
-    <!-- Bootstrap & DataTables CSS -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Dashboard Chercheur</title>
 
-    <!-- DataTables (JS et CSS) -->
+    <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
 </head>
 <body>
+<div class="container">
+    <h1>Tableau de Bord Chercheur</h1>
 
-
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Tableau de Bord - Données Scientifiques</h1>
-
-    <!-- =========================
-         1) Missions Non Habitées
-    ========================== -->
-    <h3 class="mt-4">Missions Non Habitées</h3>
-    <table id="missionsNonHabiteesTable" class="table table-striped">
+    <!-- 1) Missions Non Habitées -->
+    <h2>Missions Non Habitées</h2>
+    <table id="missionsNonHabiteesTable" class="display">
         <thead>
         <tr>
             <th>Nom de l'Objet</th>
@@ -37,14 +24,23 @@
             <th>Nombre de Missions</th>
         </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+        @foreach($missionsNonHabitees as $mnh)
+            <tr>
+                <td>{{ $mnh->nomObjet }}</td>
+                <td>{{ $mnh->distanceTerre }}</td>
+                <td>{{ $mnh->revolution }}</td>
+                <td>{{ $mnh->anneeDecouverte }}</td>
+                <td>{{ $mnh->nomAgence }}</td>
+                <td>{{ $mnh->nombreMissions }}</td>
+            </tr>
+        @endforeach
+        </tbody>
     </table>
 
-    <!-- ======================
-         2) Missions Habitées
-    ======================= -->
-    <h3 class="mt-4">Missions Habitées</h3>
-    <table id="missionsHabiteesTable" class="table table-striped">
+    <!-- 2) Missions Habitées -->
+    <h2>Missions Habitées</h2>
+    <table id="missionsHabiteesTable" class="display">
         <thead>
         <tr>
             <th>Nom de l'Objet</th>
@@ -55,14 +51,23 @@
             <th>Nombre de Missions</th>
         </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+        @foreach($missionsHabitees as $mh)
+            <tr>
+                <td>{{ $mh->nomObjet }}</td>
+                <td>{{ $mh->distanceTerre }}</td>
+                <td>{{ $mh->revolution }}</td>
+                <td>{{ $mh->anneeDecouverte }}</td>
+                <td>{{ $mh->nomAgence }}</td>
+                <td>{{ $mh->nombreMissions }}</td>
+            </tr>
+        @endforeach
+        </tbody>
     </table>
 
-    <!-- ======================
-         3) Planètes Habitables
-    ======================= -->
-    <h3 class="mt-4">Planètes Habitables</h3>
-    <table id="planetesTable" class="table table-striped">
+    <!-- 3) Planètes Habitables -->
+    <h2>Planètes Habitables</h2>
+    <table id="planetesTable" class="display">
         <thead>
         <tr>
             <th>Nom de la Planète</th>
@@ -71,14 +76,21 @@
             <th>Nombre de Missions</th>
         </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+        @foreach($planetesHabitables as $ph)
+            <tr>
+                <td>{{ $ph->nomObjet }}</td>
+                <td>{{ $ph->distanceTerre }}</td>
+                <td>{{ $ph->habitabilite }}</td>
+                <td>{{ $ph->nombreMissions }}</td>
+            </tr>
+        @endforeach
+        </tbody>
     </table>
 
-    <!-- =============================
-         4) Expériences Scientifiques
-    ============================== -->
-    <h3 class="mt-4">Expériences Scientifiques</h3>
-    <table id="experiencesTable" class="table table-striped">
+    <!-- 4) Expériences Scientifiques -->
+    <h2>Expériences Scientifiques</h2>
+    <table id="experiencesTable" class="display">
         <thead>
         <tr>
             <th>ID</th>
@@ -86,129 +98,81 @@
             <th>Type</th>
             <th>Résultats</th>
             <th>Mission</th>
-            <th>Agence Spatiale</th>
+            <th>Agence</th>
         </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+        @foreach($experiences as $exp)
+            <tr>
+                <td>{{ $exp->idExperience }}</td>
+                <td>{{ $exp->nomExperience }}</td>
+                <td>{{ $exp->typeExperience }}</td>
+                <td>{{ $exp->resultats }}</td>
+                <td>{{ $exp->nomMission }}</td>
+                <td>{{ $exp->nomAgence }}</td>
+            </tr>
+        @endforeach
+        </tbody>
     </table>
 
-    <!-- =======================
-         5) Objets Découverts
-    ======================== -->
-    <h3 class="mt-4">Objets Découverts</h3>
-    <table id="objetsDecouvertsTable" class="table table-striped">
+    <!-- 5) Objets Découverts -->
+    <h2>Objets Découverts</h2>
+    <table id="objetsDecouvertsTable" class="display">
         <thead>
         <tr>
             <th>Nom de l'Objet</th>
-            <th>Distance de la Terre (UA)</th>
-            <th>Révolution (jours)</th>
-            <th>Année de Découverte</th>
+            <th>Distance (UA)</th>
+            <th>Révolution</th>
+            <th>Année</th>
             <th>Agence Découvreuse</th>
         </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+        @foreach($objetsDecouverts as $obj)
+            <tr>
+                <td>{{ $obj->nomObjet }}</td>
+                <td>{{ $obj->distanceTerre }}</td>
+                <td>{{ $obj->revolution }}</td>
+                <td>{{ $obj->anneeDecouverte }}</td>
+                <td>{{ $obj->agenceDecouvreuse }}</td>
+            </tr>
+        @endforeach
+        </tbody>
     </table>
 </div>
 
-<!-- ===============================
-     jQuery et DataTables (CDN)
-=============================== -->
+<!-- jQuery & DataTables JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        // === Tableau 1 : Missions Non Habitées ===
+    $(document).ready(function(){
+        // On applique DataTables en mode "client" sur chacun des tableaux
         $('#missionsNonHabiteesTable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('missions.non_habitees.data') }}",
-            columns: [
-                { data: 'nomObjet', name: 'nomObjet' },
-                { data: 'distanceTerre', name: 'distanceTerre' },
-                { data: 'revolution', name: 'revolution' },
-                { data: 'anneeDecouverte', name: 'anneeDecouverte' },
-                { data: 'nomAgence', name: 'nomAgence' },
-                { data: 'nombreMissions', name: 'nombreMissions' }
-            ],
-            order: [[5, 'desc']],  // Tri par défaut sur le nombre de missions
             pageLength: 5,
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/French.json"
             }
         });
-
-        // === Tableau 2 : Missions Habitées ===
         $('#missionsHabiteesTable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('missions.habitees.data') }}",
-            columns: [
-                { data: 'nomObjet', name: 'nomObjet' },
-                { data: 'distanceTerre', name: 'distanceTerre' },
-                { data: 'revolution', name: 'revolution' },
-                { data: 'anneeDecouverte', name: 'anneeDecouverte' },
-                { data: 'nomAgence', name: 'nomAgence' },
-                { data: 'nombreMissions', name: 'nombreMissions' }
-            ],
-            order: [[5, 'desc']],
             pageLength: 5,
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/French.json"
             }
         });
-
-        // === Tableau 3 : Planètes Habitables ===
         $('#planetesTable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('planetes.habitables.data') }}",
-            columns: [
-                { data: 'nomObjet', name: 'nomObjet' },
-                { data: 'distanceTerre', name: 'distanceTerre' },
-                { data: 'habitabilite', name: 'habitabilite' },
-                { data: 'nombreMissions', name: 'nombreMissions' }
-            ],
-            order: [[2, 'desc']],  // Tri par défaut sur l'habitabilité
             pageLength: 5,
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/French.json"
             }
         });
-
-        // === Tableau 4 : Expériences Scientifiques ===
         $('#experiencesTable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('experiences.data') }}",
-            columns: [
-                { data: 'idExperience', name: 'idExperience' },
-                { data: 'nomExperience', name: 'nomExperience' },
-                { data: 'typeExperience', name: 'typeExperience' },
-                { data: 'resultats', name: 'resultats' },
-                { data: 'nomMission', name: 'nomMission' },
-                { data: 'nomAgence', name: 'nomAgence' }
-            ],
-            order: [[1, 'asc']],   // Tri par défaut sur le nom de l'expérience
             pageLength: 5,
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/French.json"
             }
         });
-
-        // === Tableau 5 : Objets Découverts ===
         $('#objetsDecouvertsTable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('objets.decouverts.data') }}",
-            columns: [
-                { data: 'nomObjet', name: 'nomObjet' },
-                { data: 'distanceTerre', name: 'distanceTerre' },
-                { data: 'revolution', name: 'revolution' },
-                { data: 'anneeDecouverte', name: 'anneeDecouverte' },
-                { data: 'agenceDecouvreuse', name: 'agenceDecouvreuse' }
-            ],
             pageLength: 5,
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/French.json"

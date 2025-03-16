@@ -7,58 +7,29 @@ use App\Models\VueMissionsHabitees;
 use App\Models\VuePlanetesHabitables;
 use App\Models\VueExperiences;
 use App\Models\VueObjetsDecouvert;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
-use Yajra\DataTables\Facades\DataTables;
 
 class DataCher extends Controller
 {
     /**
-     * Affiche le tableau de bord unique.
+     * Affiche TOUTES les données d'un coup
      */
-    public function index(): View
+    public function index()
     {
-        return view('data_chercheur'); // => resources/views/dashboard.blade.php
-    }
+        // 1) Récupérer toutes les données de chaque "vue" Eloquent
+        $missionsNonHabitees = VueMissionsNonHabitees::all();
+        $missionsHabitees    = VueMissionsHabitees::all();
+        $planetesHabitables  = VuePlanetesHabitables::all();
+        $experiences         = VueExperiences::all();
+        $objetsDecouverts    = VueObjetsDecouvert::all();
 
-    /**
-     * 1) Récupère les Missions Non Habitées.
-     */
-    public function getMissionsNonHabitees(): JsonResponse
-    {
-        return DataTables::of(VueMissionsNonHabitees::query())->make(true);
-    }
-
-    /**
-     * 2) Récupère les Missions Habitées.
-     */
-    public function getMissionsHabitees(): JsonResponse
-    {
-        return DataTables::of(VueMissionsHabitees::query())->make(true);
-    }
-
-    /**
-     * 3) Récupère les Planètes Habitables.
-     */
-    public function getPlanetesHabitables(): JsonResponse
-    {
-        return DataTables::of(VuePlanetesHabitables::query())->make(true);
-    }
-
-    /**
-     * 4) Récupère les Expériences Scientifiques.
-     */
-    public function getExperiences(): JsonResponse
-    {
-        return DataTables::of(VueExperiences::query())->make(true);
-    }
-
-    /**
-     * 5) Récupère les Objets Découverts.
-     */
-    public function getObjetsDecouverts(): JsonResponse
-    {
-        return DataTables::of(VueObjetsDecouvert::query())->make(true);
+        // 2) Retourne UNE vue, en lui passant toutes les données
+        return view('data_chercheur', compact(
+            'missionsNonHabitees',
+            'missionsHabitees',
+            'planetesHabitables',
+            'experiences',
+            'objetsDecouverts'
+        ));
     }
 }
