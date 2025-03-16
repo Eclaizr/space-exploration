@@ -17,8 +17,14 @@ use App\Http\Controllers\dataAstro;
 Route::get('/data_astronaute', [DataAstro::class, 'index'])->name('data_astronaute');
 Route::get('/data_astronaute/data', [DataAstro::class, 'getMissions'])->name('data');
 
-use App\Http\Controllers\ObjetsDecouvertsController;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/objets', [ObjetsDecouvertsController::class, 'index'])->name('object_discovered.index');
-Route::get('/objets/data', [ObjetsDecouvertsController::class, 'getObjetsExplores'])->name('object_discovered.data');
-Route::get('/objets/filters', [ObjetsDecouvertsController::class, 'getFilters'])->name('object_discovered.filters');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+Route::get('/missions/non-habitees/data', [DashboardController::class, 'getMissionsNonHabitees'])->name('missions.non_habitees.data');
+
+Route::get('/missions/habitees/data', [DashboardController::class, 'getMissionsHabitees'])->name('missions.habitees.data');
+
+Route::get('/planetes/habitables/data', [DashboardController::class, 'getPlanetesHabitables'])->name('planetes.habitables.data');
+
+Route::get('/experiences/data', [DashboardController::class, 'getExperiences'])->name('experiences.data');
