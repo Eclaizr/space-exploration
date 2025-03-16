@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Traits\HasRoles;
 
 class Login extends Authenticatable
 {
     use HasFactory;
+    use HasRoles;
 
     protected $fillable = ['username', 'password', 'role'];
 
@@ -16,20 +18,8 @@ class Login extends Authenticatable
     {
         parent::boot();
         static::creating(function ($login) {
-            $login->password = Hash::make($login->password);
+            //$login->password = Hash::make($login->password);
         });
-    }
-
-    // Vérifier le rôle
-    
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
-
-    public function isGestionnaire()
-    {
-        return $this->role === 'gestionnaire';
     }
 
     public function isAstronaute()
@@ -41,4 +31,10 @@ class Login extends Authenticatable
     {
         return $this->role === 'chercheur';
     }
+
+    public function isGestionnaire()
+    {
+        return $this->role === 'gestionnaire';
+    }
+
 }
