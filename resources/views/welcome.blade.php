@@ -5,8 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - Space Exploration</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+
 </head>
 <body>
+
+<!-- MENU HEADER -->
+<header class="menu-bar">
+    <h1>Space Exploration</h1>
+
+    <!-- Menu Burger pour mobile -->
+    <div class="burger-menu" onclick="toggleMenu()">☰</div>
+
+    <!-- Navigation -->
+    <nav class="nav-links">
+        <a href="{{ route('login')}}" class="nav-button active">Sign In</a>
+        <a href="{{ route('register') }}" class="nav-button">Sign Up</a>
+    </nav>
+</header>
+
 
 <!-- Conteneur de la vidéo -->
     <div class="video-container">
@@ -21,7 +38,7 @@
     <div class="login-container">
         <h2>Veuillez vous connecter</h2>
         <form action="#" method="POST">
-            <label for="identifiant">Identifiant</label>
+            <label for="identifiant">Identifiant : </label>
             <input type="identifiant" id="identifiant" name="identifiant" placeholder="Votre identifiant" required>
 
             <label for="password">Mot de passe :</label>
@@ -31,5 +48,14 @@
             <a href="#" class="link">Mot de passe oublié ?</a>
         </form>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector(".nav-links");
+            nav.classList.toggle("show");
+        }
+    </script>
+    
+    
 </body>
 </html>
