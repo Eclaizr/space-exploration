@@ -42,6 +42,7 @@ Route::middleware(['role:astronaute'=>CheckAstronaute::class])->group(function (
 
 Route::middleware(['role:chercheur' => CheckChercheur::class])->group(function () {
     Route::get('/data_chercheur', [DataCher::class, 'index'])->name('data_chercheur');
+    
 });
 
 Route::middleware(['role:gestionnaire'])->group(function () {
