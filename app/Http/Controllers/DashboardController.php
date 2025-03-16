@@ -6,6 +6,7 @@ use App\Models\VueMissionsNonHabitees;
 use App\Models\VueMissionsHabitees;
 use App\Models\VuePlanetesHabitables;
 use App\Models\VueExperiences;
+use App\Models\VueObjetsDecouvert;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -15,25 +16,22 @@ class DashboardController extends Controller
 {
     /**
      * Affiche le tableau de bord unique.
-     * Correspond à la vue "dashboard.blade.php".
      */
     public function index(): View
     {
-        // Simplement retourner la vue unique
-        return view('dashboard');
+        return view('dashboard'); // => resources/views/dashboard.blade.php
     }
 
     /**
-     * Récupère les données (JSON) pour le tableau Missions Non Habitées.
+     * 1) Récupère les Missions Non Habitées.
      */
     public function getMissionsNonHabitees(): JsonResponse
     {
-        // On renvoie un DataTable basé sur le modèle VueMissionsNonHabitees
         return DataTables::of(VueMissionsNonHabitees::query())->make(true);
     }
 
     /**
-     * Récupère les données (JSON) pour le tableau Missions Habitées.
+     * 2) Récupère les Missions Habitées.
      */
     public function getMissionsHabitees(): JsonResponse
     {
@@ -41,7 +39,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * Récupère les données (JSON) pour le tableau Planètes Habitables.
+     * 3) Récupère les Planètes Habitables.
      */
     public function getPlanetesHabitables(): JsonResponse
     {
@@ -49,10 +47,18 @@ class DashboardController extends Controller
     }
 
     /**
-     * Récupère les données (JSON) pour le tableau Expériences Scientifiques.
+     * 4) Récupère les Expériences Scientifiques.
      */
     public function getExperiences(): JsonResponse
     {
         return DataTables::of(VueExperiences::query())->make(true);
+    }
+
+    /**
+     * 5) Récupère les Objets Découverts.
+     */
+    public function getObjetsDecouverts(): JsonResponse
+    {
+        return DataTables::of(VueObjetsDecouvert::query())->make(true);
     }
 }
