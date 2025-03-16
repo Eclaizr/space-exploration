@@ -12,47 +12,39 @@ use App\Models\VueObjetsDecouvert;
 use App\Models\VueGestionnaireMission;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
+    public function login()
     {
         return view('auth.login');  // Afficher le formulaire de connexion
     }
 
-    public function login(Request $request)
+    public function doLogin(LoginRequest $request)
     {
-        // Validation des données
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required'
-        ]);
+        // on recup le couple username/password -> tableau username et password
+        $credentials = $request->validated();
 
-        // Tenter de se connecter avec les informations fournies
-        if (Authentification::checkUser($request)) {
-            // Si la connexion est réussie, créer une session
-            $user = Auth::user();
-            session(['user' => $user]);
-
-            // Rediriger vers le tableau de bord
-            return $this->redirectToDashboard($request);
+        // on va verifier ces infos
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            $role = Auth::user()->role;
+            return $this->redirectToDashboard($role);
         }
-
-        // Si les identifiants sont incorrects, afficher un message d'erreur
-        return back()->with('error', 'Identifiants invalides');
+        return to_route('auth.login')->with('error', 'Login ou mot de passe incorrect');
+        
     }
 
-    protected function redirectToDashboard(Request $request)
+    public function logout()
     {
-        $usernameInput = $request->input('username');
-        $user = Login::where('username', $usernameInput)->first();
+        Auth::logout();
+        return to_route('auth.login');
+    }
 
-        if (!$user) {
-            return back()->with('error', 'Utilisateur non trouvé');
-        }
-
-        $role = $user->role; // "chercheur" ou "astronaute"
-
+//return $this->redirectToDashboard($request);
+    protected function redirectToDashboard($role)
+    {
         if ($role == 'astronaute') {
             return redirect()->route('dataAstronaute');
         } elseif ($role == 'chercheur') {

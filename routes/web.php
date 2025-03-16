@@ -1,6 +1,8 @@
 <?php
 // filepath: c:\Users\clair\Desktop\space-exploration\routes\web.php
 
+use App\Http\Middleware\CheckAstronaute;
+use App\Http\Middleware\CheckChercheur;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
@@ -15,8 +17,9 @@ Route::get('/', function () {
 })->name('welcome');
 
 // Routes pour la connexion
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+Route::get('/login', [LoginController::class, 'login'])->name('auth.login');
+Route::post('/login', [LoginController::class, 'doLogin']);
+Route::delete('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 
 // Routes pour l'enregistrement
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
@@ -30,14 +33,19 @@ Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('dashboard
 // Route::get('/dataAstronaute', [dataAstro::class, 'index'])->name('dataAstronaute')->middleware('role:astronaute,gestionnaire');
 // Route::get('/dataChercheur', [dataChercheur::class, 'index'])->name('dataChercheur')->middleware('role:chercheur');
 // Route::get('/dataGestionnaire', [dataGestionnaire::class, 'index'])->name('dataGestionnaire')->middleware('role:gestionnaire');
-Route::get('/dataAstronaute', [DataAstro::class, 'index'])->name('dataAstronaute');
-Route::get('/dataAstronaute/data', [DataAstro::class, 'getMissions'])->name('data');
-Route::get('/dataAstronaute/liste', [DataAstro::class, 'getAstronautes'])->name('liste');
+Route::middleware(['isAstronaute'=>CheckAstronaute::class])->group( function (){
+    Route::get('/dataAstronaute', [DataAstro::class, 'index'])->name('dataAstronaute');
+    Route::get('/dataAstronaute/data', [DataAstro::class, 'getMissions'])->name('data');
+    Route::get('/dataAstronaute/liste', [DataAstro::class, 'getAstronautes'])->name('liste');
+    
+});
 
 Route::get('/affichageGestionnaire', [DataGestionnaire::class, 'index'])->name('affichageGestionnaire');
 
 use App\Http\Controllers\dataChercheur_Discover;
 
-Route::get('/objets-decouverts', [dataChercheur_Discover::class, 'index'])->name('objets.index');
-Route::get('/objets-decouverts/data', [dataChercheur_Discover::class, 'getObjetsExplores'])->name('objets.data');
-Route::get('/objets-decouverts/filters', [dataChercheur_Discover::class, 'getFilters'])->name('objets.filters');
+Route::middleware(['isChercheur'=>CheckChercheur::class])->group( function (){
+    Route::get('/objets-decouverts', [dataChercheur_Discover::class, 'index'])->name('objets.index');
+    Route::get('/objets-decouverts/data', [dataChercheur_Discover::class, 'getObjetsExplores'])->name('objets.data');
+    Route::get('/objets-decouverts/filters', [dataChercheur_Discover::class, 'getFilters'])->name('objets.filters');
+});

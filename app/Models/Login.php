@@ -18,8 +18,23 @@ class Login extends Authenticatable
     {
         parent::boot();
         static::creating(function ($login) {
-            $login->password = Hash::make($login->password);
+            //$login->password = Hash::make($login->password);
         });
+    }
+
+    public function isAstronaute()
+    {
+        return $this->role === 'astronaute';
+    }
+
+    public function isChercheur()
+    {
+        return $this->role === 'chercheur';
+    }
+
+    public function isGestionnaire()
+    {
+        return $this->role === 'gestionnaire';
     }
 
 }

@@ -16,26 +16,19 @@
     <div class="login-container">
         <h2>Veuillez vous connecter</h2>
 
-        <!-- Messages de succès ou d'erreur -->
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-
-        <form action="{{ route('login.submit') }}" method="POST">
+        <form action="{{ route('auth.login') }}" method="POST">
             @csrf
             <label for="username">Identifiant : </label>
             <input type="text" id="username" name="username" placeholder="Votre identifiant" required>
+            @error("username")
+                <span class="error">{{ $message }}</span>
+            @enderror
 
             <label for="password">Mot de passe :</label>
             <input type="password" id="password" name="password" placeholder="Votre mot de passe" required>
+            @error("password")
+                <span class="error">{{ $message }}</span>
+            @enderror
 
             <button type="submit">Connexion</button>
         </form>

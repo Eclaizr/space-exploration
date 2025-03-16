@@ -12,16 +12,26 @@
 
 <!-- MENU HEADER -->
 <header class="menu-bar">
-    <h1><a href="{{ route('login') }}">Space Exploration</a></h1>
+    <h1><a href="{{ route('auth.login') }}">Space Exploration</a></h1>
 
     <!-- Menu Burger pour mobile -->
     <div class="burger-menu" onclick="toggleMenu()">☰</div>
 
-    <!-- Navigation -->
+    @auth 
     <nav class="nav-links">
-        <a href="{{ route('login') }}" class="nav-button active">Sign In</a>
+        <form action="{{route('auth.logout')}}" method="POST">
+            @method("delete")
+            @csrf
+            <button type="submit" class="nav-button active">Log out</button>
+        </form>
+    @endauth
+    <!-- Navigation -->
+     @guest
+    <nav class="nav-links">
+        <a href="{{ route('auth.login') }}" class="nav-button active">Sign In</a>
         <a href="{{ route('register') }}" class="nav-button">Sign Up</a>
     </nav>
+    @endguest
 </header>
 
 <!-- Conteneur de la vidéo -->

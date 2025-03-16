@@ -15,9 +15,21 @@
         <h1>Space Exploration</a></h1>
         <div class="burger-menu" onclick="toggleMenu()">☰</div>
         <nav class="nav-links">
-            <a href="" class="nav-button active">Log out</a>
+            <form action="{{route('auth.logout')}}" method="POST">
+                @method("delete")
+                @csrf
+                <button type="submit" class="nav-button active">Log out</button>
+            </form>
         </nav>
 </header>
+
+@if (Auth::check())
+    <p>Bienvenue, {{ Auth::user()->username }}!</p> <!-- Affiche le nom de l'utilisateur -->
+    <p>Role : {{ Auth::user()->role }}</p> <!-- Affiche l'email de l'utilisateur -->
+@else
+    <p>Veuillez vous connecter</p>
+    
+@endif
 
 <h1>Tableau de bord</h1>
 <h2> Liste des astronautes </h2>

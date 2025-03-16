@@ -10,10 +10,10 @@
 <body>
     <!-- MENU HEADER -->
     <header class="menu-bar">
-        <h1><a href="{{ route('login') }}">Space Exploration</a></h1>
+        <h1><a href="{{ route('auth.login') }}">Space Exploration</a></h1>
         <div class="burger-menu" onclick="toggleMenu()">☰</div>
         <nav class="nav-links">
-            <a href="{{ route('login') }}" class="nav-button active">Sign In</a>
+            <a href="{{ route('auth.login') }}" class="nav-button active">Sign In</a>
             <a href="{{ route('register') }}" class="nav-button">Sign Up</a>
         </nav>
     </header>

@@ -44,6 +44,6 @@ class RegisterController extends Controller
         $login->save();
 
         // Rediriger vers la page de connexion avec un message de succès
-        return redirect()->route('login')->with('success', 'Utilisateur créé, vous pouvez maintenant vous connecter.');
+        return redirect()->route('auth.login')->with('success', 'Utilisateur créé, vous pouvez maintenant vous connecter.');
     }
 }

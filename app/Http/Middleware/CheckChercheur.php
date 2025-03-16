@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Authentification;
 use Illuminate\Support\Facades\Auth;
 
-class CheckRole
+class CheckChercheur
 {
     /**
      * Handle an incoming request.
@@ -21,11 +21,10 @@ class CheckRole
 
     public function handle(Request $request, Closure $next, ...$roles)
         {
-            $user = Auth::user();
-    
+            $role = Auth::user()->role;
             // Vérifier si l'utilisateur a l'un des rôles spécifiés
-            if (!in_array($user->role, $roles)) {
-                return redirect('welcome');  // Rediriger si l'utilisateur n'a pas le bon rôle
+            if (!($role === 'chercheur' || $role === 'gestionnaire')) {
+                return to_route('welcome');  // Rediriger si l'utilisateur n'a pas le bon rôle
             }
     
             return $next($request);
