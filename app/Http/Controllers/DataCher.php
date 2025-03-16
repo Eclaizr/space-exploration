@@ -5,25 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\VueMissionsNonHabitees;
 use App\Models\VueMissionsHabitees;
 use App\Models\VuePlanetesHabitables;
-use App\Models\VueExperiences;
+use App\Models\VueExperiences; // ✅ Vue SQL
 use App\Models\VueObjetsDecouvert;
 use Illuminate\Http\Request;
+use App\Models\Experiencescientifique; 
+use App\Models\Objetceleste;
 
 class DataCher extends Controller
 {
     /**
-     * Affiche TOUTES les données d'un coup
+     * Affiche toutes les données
      */
     public function index()
     {
-        // 1) Récupérer toutes les données de chaque "vue" Eloquent
+        // Récupérer les données depuis les VUES SQL
         $missionsNonHabitees = VueMissionsNonHabitees::all();
         $missionsHabitees    = VueMissionsHabitees::all();
         $planetesHabitables  = VuePlanetesHabitables::all();
-        $experiences         = VueExperiences::all();
+        $experiences         = VueExperiences::all(); 
         $objetsDecouverts    = VueObjetsDecouvert::all();
 
-        // 2) Retourne UNE vue, en lui passant toutes les données
         return view('data_chercheur', compact(
             'missionsNonHabitees',
             'missionsHabitees',
@@ -31,5 +32,55 @@ class DataCher extends Controller
             'experiences',
             'objetsDecouverts'
         ));
+    }
+
+    /**
+     * Afficher le formulaire pour ajouter une expérience
+     */
+    public function createExperience()
+    {
+        return view('formExperience');
+    }
+
+    /**
+     * Ajouter une nouvelle expérience dans la table réelle (pas la vue)
+     */
+    public function storeExperience(Request $request)
+    {
+        $request->validate([
+            'nomExperience' => 'required|string|max:50',
+            'typeExperience' => 'required|in:Horticulture,Géologie,Télécommunication',
+            'resultats' => 'required|string',
+        ]);
+
+        Experiencescientifique::create($request->all()); // ✅ Ajout dans la table réelle
+
+        return redirect()->route('data_chercheur')->with('success', 'Expérience ajoutée avec succès');
+    }
+
+    /**
+     * Afficher le formulaire pour ajouter un objet découvert
+     */
+    public function createObjetDecouvert()
+    {
+        return view('formObjetDecouvert');
+    }
+
+    /**
+     * Ajouter un nouvel objet découvert dans la table réelle
+     */
+    public function storeObjetDecouvert(Request $request)
+    {
+        $request->validate([
+            'nomObjet' => 'required|string|max:255',
+            'distanceTerre' => 'required|numeric',
+            'revolution' => 'required|numeric',
+            'anneeDecouverte' => 'required|integer',
+            'agenceDecouvreuse' => 'required|string|max:255',
+        ]);
+
+        Objetceleste::create($request->all());
+
+        return redirect()->route('data_chercheur')->with('success', 'Objet découvert ajouté avec succès');
     }
 }

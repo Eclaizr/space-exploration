@@ -42,6 +42,13 @@ Route::middleware(['role:astronaute'=>CheckAstronaute::class])->group(function (
 
 Route::middleware(['role:chercheur' => CheckChercheur::class])->group(function () {
     Route::get('/data_chercheur', [DataCher::class, 'index'])->name('data_chercheur');
+
+    
+Route::get('/formExperience', [DataCher::class, 'createExperience'])->name('formExperience');
+Route::post('/formExperience', [DataCher::class, 'storeExperience'])->name('storeExperience');
+
+Route::get('/formObjetDecouvert', [DataCher::class, 'createObjetDecouvert'])->name('formObjetDecouvert');
+Route::post('/formObjetDecouvert', [DataCher::class, 'storeObjetDecouvert'])->name('storeObjetDecouvert');
     
 });
 

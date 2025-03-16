@@ -1,3 +1,4 @@
+<!-- filepath: c:\Users\block\OneDrive - IMTBS-TSP\Bureau\xammp\htdocs\space-exploration\resources\views\data_chercheur.blade.php -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -89,7 +90,7 @@
     </table>
 
     <!-- 4) Expériences Scientifiques -->
-    <h2>Expériences Scientifiques</h2>
+    <h2>Expériences Scientifiques <a href="/formExperience">Ajouter</a></h2>
     <table id="experiencesTable" class="display">
         <thead>
         <tr>
@@ -116,7 +117,7 @@
     </table>
 
     <!-- 5) Objets Découverts -->
-    <h2>Objets Découverts</h2>
+    <h2>Objets Découverts <a href="/formObjetDecouvert">Ajouter</a></h2>
     <table id="objetsDecouvertsTable" class="display">
         <thead>
         <tr>

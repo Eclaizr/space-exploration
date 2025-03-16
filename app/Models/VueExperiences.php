@@ -15,7 +15,5 @@ class VueExperiences extends Model
         'nomExperience',
         'typeExperience',
         'resultats',
-        'nomMission',
-        'nomAgence'
     ];
 }
