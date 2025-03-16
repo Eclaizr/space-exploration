@@ -1,4 +1,4 @@
- <div class="id">
+<div class="id">
         <h1>Fichier d'identité</h1>
         <img src="">
         <p>Numéro d'identification: {{$Astronaute->idAstro}}</p>

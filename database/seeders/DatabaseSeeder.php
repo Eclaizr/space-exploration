@@ -13,7 +13,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call(RoleSeeder::class);
+
+        $gestionnaireRole = Role::firstWhere('name', RoleEnum::GESTIONNAIRE->value);
+
+        Login::factory(5)->create()->each(function (Login $login) {
+            $login->assignRole($gestionnaireRole);
+        });
+        
+        
 
         User::factory()->create([
             'name' => 'Test User',

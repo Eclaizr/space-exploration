@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Login;
 use App\Models\Astronaute;
 
 class Astro_Affichage extends Controller
@@ -11,13 +11,13 @@ class Astro_Affichage extends Controller
     public function show($id)
     {
         // Récupérer l'utilisateur via son ID
-        $user = User::find($id);
+        $user = Login::find($id);
         if (!$user) {
             return back()->with('error', 'Utilisateur introuvable');
         }
 
         // Récupérer les infos d'astronaute (table `astronautes`)
-        $profil = Astronaute::where('user_id', $user->id)->first();
+        $profil = Astronaute::where('idAstro', $user->id)->first();
         if (!$profil) {
             return back()->with('error', 'Profil astronaute introuvable');
         }

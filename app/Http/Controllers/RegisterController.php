@@ -1,6 +1,6 @@
 <?php
 // filepath: c:\Users\clair\Desktop\space-exploration\app\Http\Controllers\Auth\RegisterController.php
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,17 +12,23 @@ class RegisterController extends Controller
 {
     public function showRegisterForm()
     {
-        return view('register');  // Assurez-vous que cette vue existe
+        return view('auth.register');  // Assurez-vous que cette vue existe
     }
 
     public function register(Request $request)
     {
+        // Messages de validation personnalisés
+        $messages = [
+            'password.min' => 'The password must be at least 8 characters.',
+            'password.confirmed' => 'Passwords do not match.',
+        ];
+
         // Validation des données
         $validator = Validator::make($request->all(), [
             'username' => 'required|unique:logins|alpha_dash|min:4|max:255',  // Utiliser 'username' à la place de 'login'
             'password' => 'required|confirmed|min:8',
             'role' => 'required|in:admin,gestionnaire,astronaute,chercheur',
-        ]);
+        ], $messages);
 
         if ($validator->fails()) {
             return redirect()->route('register')

@@ -31,8 +31,8 @@
 }
 
 .menu-bar h1 a {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit the color from the parent element */
+    text-decoration: none;
+    color: #00eaff;
 }
 
 /* Navigation */
@@ -149,7 +149,7 @@ body {
 /* Titre */
 h2 {
     margin-bottom: 20px;
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #00ccff;
@@ -256,3 +256,4 @@ button:hover {
     font-size: 12px;
     font-weight: bold;
 }
+

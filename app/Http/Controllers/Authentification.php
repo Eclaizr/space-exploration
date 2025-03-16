@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use App\Models\Login;
 use App\Models\Chercheur;
 use App\Models\Astronaute;
 
-class Auth extends Controller
+class Authentification extends Controller
 {
-    public function checkUser(Request $request)
+    public static function checkUser(Request $request)
     {
         // 1. Récupérer l'ID et le mot de passe
-        $idInput       = $request->input('id');
+        $usernameInput = $request->input('username');
         $passwordInput = $request->input('password');
 
         // 2. Vérifier si l'utilisateur existe
-        $user = User::find($idInput);
+        $user = Login::find($usernameInput);
         if (!$user) {
             return back()->with('error', 'Utilisateur introuvable');
         }
@@ -28,15 +28,15 @@ class Auth extends Controller
         }
 
         // 4. Vérifier le métier (chercheur ou astronaute)
-        $metier = $user->metier; // "chercheur" ou "astronaute"
+        $role = $user->role; // "chercheur" ou "astronaute"
 
         // 5. Rediriger selon le métier
-        if ($metier === 'astronaute') {
+        if ($role === 'astronaute') {
             // Redirige vers la route 'astronaute.show' en passant l'ID de l'utilisateur
-            return redirect()->route('astronaute.show', $user->id);
+            return redirect()->route('astronaute.show', $user->username);
         } else {
             // Sinon on considère qu'il est 'chercheur'
-            return redirect()->route('chercheur.show', $user->id);
+            return redirect()->route('chercheur.show', $user->username);
         }
     }
 }

@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Traits\HasRoles;
 
 class Login extends Authenticatable
 {
     use HasFactory;
+    use HasRoles;
 
     protected $fillable = ['username', 'password', 'role'];
 
@@ -20,25 +22,4 @@ class Login extends Authenticatable
         });
     }
 
-    // Vérifier le rôle
-    
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
-
-    public function isGestionnaire()
-    {
-        return $this->role === 'gestionnaire';
-    }
-
-    public function isAstronaute()
-    {
-        return $this->role === 'astronaute';
-    }
-
-    public function isChercheur()
-    {
-        return $this->role === 'chercheur';
-    }
 }
