@@ -46,9 +46,8 @@ class DataCher extends Controller
     public function storeExperience(Request $request)
     {
         $request->validate([
-            
             'nomExperience' => 'required|string|max:50',
-            'typeExperience' => 'required|in:Horticulture,Géologie,Télécommunication',
+            'typeExperience' => 'required|in:Horticulture,Géologie,Télécommunications,Informatique,Science,Biologie,Chimie,Éducation,Médecine,Astrophysique,Autre',
             'resultats' => 'required|string',
         ]);
 
@@ -70,7 +69,7 @@ class DataCher extends Controller
      */
     public function storeObjetDecouvert(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'nomObjet' => 'required|string|max:255',
             'distanceTerre' => 'required|numeric',
             'revolution' => 'required|numeric',
@@ -78,23 +77,8 @@ class DataCher extends Controller
             'agenceDecouvreuse' => 'required|string|max:255',
         ]);
 
-        try {
-            DB::beginTransaction();
+        Objetceleste::create($request->all());
 
-            $existingObjet = Objetceleste::where('nomObjet', $validatedData['nomObjet'])->first();
-
-            if ($existingObjet) {
-                return redirect()->route('formObjetDecouvert')->with('error', 'Cet objet existe déjà.');
-            }
-
-            Objetceleste::create($validatedData);
-
-            DB::commit();
-
-            return redirect()->route('data_chercheur')->with('success', 'Objet découvert ajouté avec succès.');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return redirect()->route('formObjetDecouvert')->with('error', 'Erreur lors de l\'ajout : ' . $e->getMessage());
-        }
+        return redirect()->route('data_chercheur')->with('success', 'Objet découvert ajouté avec succès');
     }
 }

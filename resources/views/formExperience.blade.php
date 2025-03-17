@@ -13,11 +13,20 @@
         <label for="nomExperience">Nom de l'Expérience:</label>
         <input type="text" id="nomExperience" name="nomExperience" required maxlength="50">
         
-        <label for="typeExperience">Type:</label>
+        <label for="typeExperience">Type d'Expérience:</label>
         <select id="typeExperience" name="typeExperience" required>
+            <option value="">-- Sélectionnez un type --</option>
             <option value="Horticulture">Horticulture</option>
             <option value="Géologie">Géologie</option>
-            <option value="Télécommunication">Télécommunication</option>
+            <option value="Télécommunications">Télécommunications</option>
+            <option value="Informatique">Informatique</option>
+            <option value="Science">Science</option>
+            <option value="Biologie">Biologie</option>
+            <option value="Chimie">Chimie</option>
+            <option value="Éducation">Éducation</option>
+            <option value="Médecine">Médecine</option>
+            <option value="Astrophysique">Astrophysique</option>
+            <option value="Autre">Autre</option>
         </select>
         
         <label for="resultats">Résultats:</label>
