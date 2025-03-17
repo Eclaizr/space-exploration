@@ -46,7 +46,6 @@
 
             <label for="role">Rôle :</label>
             <select id="role" name="role" required>
-                <option value="admin">Admin</option>
                 <option value="gestionnaire">Gestionnaire</option>
                 <option value="astronaute">Astronaute</option>
                 <option value="chercheur">Chercheur</option>

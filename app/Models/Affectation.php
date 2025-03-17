@@ -24,7 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Affectation extends Model
 {
-	protected $table = 'affectation';
+	protected $table = 'exploration_spatiale.affectation';
+	protected $primaryKey = 'idAstro';
 	public $incrementing = false;
 	public $timestamps = false;
 

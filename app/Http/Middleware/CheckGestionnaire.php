@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Authentification;
 use Illuminate\Support\Facades\Auth;
 
-class CheckAstronaute
+class CheckGestionnaire
 {
     /**
      * Handle an incoming request.
@@ -23,10 +23,10 @@ class CheckAstronaute
         {
             $role = Auth::user()->role;
             // Vérifier si l'utilisateur a l'un des rôles spécifiés
-            if ($role === 'astronaute' || $role === 'gestionnaire') {
-                return $next($request);
+            if (!($role === 'gestionnaire')) {
+                return to_route('welcome');  // Rediriger si l'utilisateur n'a pas le bon rôle
             }
-            return to_route('welcome');  // Rediriger si l'utilisateur n'a pas le bon rôle
-            
+    
+            return $next($request);
         }
 }

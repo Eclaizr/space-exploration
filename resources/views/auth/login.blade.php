@@ -3,7 +3,7 @@
 @section('title', 'Connexion - Space Exploration') <!-- Définir le titre de la page -->
 
 @section('content')  <!-- Section du contenu spécifique à la page -->
-
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 <!-- Conteneur de la vidéo -->
 <div class="video-container">
         <video autoplay muted loop id="background-video">

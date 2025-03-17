@@ -50,7 +50,7 @@ class LoginController extends Controller
         } elseif ($role == 'chercheur') {
             return redirect()->route('objets.index');
         } else {
-            return redirect()->route('affichageGestionnaire');
+            return redirect()->route('dataAstronaute');
         }
     }
 

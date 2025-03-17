@@ -1,0 +1,136 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('../images/space_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(31, 16, 77);
+}
+
+.form-container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 16px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    width: 350px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00ccff;
+    font-family: 'Audiowide', sans-serif; /* Futuristic Space Font */
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    text-align: left;
+    margin: 10px 0 5px;
+    color: #bbb;
+}
+
+input {
+    width: 94%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+}
+
+input::placeholder {
+    color: #bbb;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #0066ff, #00ccff);
+    border: none;
+    color: white;
+    font-size: 12px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #00ccff, #0066ff);
+}
+
+.link {
+    display: block;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #00ccff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.link:hover {
+    color: #fff;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(31, 16, 77);
+}
+
+.container-element{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert{
+    color: white;
+}
+
+div#estHabitee{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+input#estHabitee{
+    width: unset;
+}
+
+div#statut{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+input#statut{
+    width: unset;
+}
+
+div#vaisseau{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+input#vaisseau{
+    width: unset;
+}
