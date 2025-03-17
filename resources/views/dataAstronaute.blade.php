@@ -18,7 +18,6 @@
 </head>
 
 <body>
-    
 
     <!-- MENU HEADER -->
     <header class="menu-bar">
