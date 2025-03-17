@@ -117,7 +117,7 @@
         <tr>
             <th>Nom de la Planète</th>
             <th>Distance de la Terre (UA)</th>
-            <th>Indice d'Habitabilité</th>
+            <th><a href="https://fr.wikipedia.org/wiki/Indice_de_similarit%C3%A9_avec_la_Terre" >Indice d'Habitabilité</a></th>
             <th>Nombre de Missions</th>
         </tr>
         </thead>
