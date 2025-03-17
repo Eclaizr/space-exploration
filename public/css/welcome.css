@@ -15,6 +15,7 @@ div.title{
 body {
     margin: 0;
     background-color: black;
+    text-align: center;
   }
   
   .star {
@@ -55,13 +56,22 @@ body {
   /* Set the animation & hide the logo */
   .logo {    
       position: absolute;
-      top: 20%;
+      top: 40%;
       left: 45%;
       z-index: 1;
       margin: auto;
       animation: logo 9s ease-out 9s;
       opacity: 0;
   }
+
+  .logo-container {
+    position: absolute; /* Permet de positionner le logo au centre */
+    transform: translate(-50%, -50%); /* Centre parfaitement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
   
   .logo svg {
       width: inherit;
@@ -101,7 +111,7 @@ body {
     font-size: 350%;
     height: 42em;
     width: 20em;
-    bottom: 610px;
+    bottom: 100px;
     left: 50%;
   }
   

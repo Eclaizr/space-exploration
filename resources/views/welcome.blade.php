@@ -50,11 +50,16 @@
 
 <!-- LE SHOW -->
 
+<audio id="background-music" autoplay>
+    <source src="{{ asset('audio/starwars-theme.mp3') }}" type="audio/mp3">
+    Votre navigateur ne supporte pas l'élément audio.
+</audio>
+
 <section class="intro">
   A long time ago, in a galaxy far,<br> far away....
 </section>
 
-<section class="logo">
+<section class="logo logo-container">
     <img id="Layer_1" src="{{ asset('images/logo.png') }}" alt="Mon Logo" width="400px">
 </section>
 
@@ -173,10 +178,20 @@ Que la science soit avec vous… <br> Et ce pour toujours.</p>
   </div>  
 </div>
 
+<script>
+    document.getElementById("play-music").addEventListener("click", function() {
+        const audio = document.getElementById("background-music");
+        audio.play();
+        this.style.display = "none"; // Masquer le bouton après activation
+    });
+</script>
 
  <script src="{{ asset('js/loader.js') }}"></script>
  <script src="{{ asset('js/menu.js') }}"></script>
  <script src="{{ asset('js/starwars.js') }}"></script>
+ <audio id="background-music" loop>
+    <source src="{{ asset('audio/starwars-theme.mp3') }}" type="audio/mp3">
+</audio>
 
 </body>
 </html>
