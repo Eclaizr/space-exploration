@@ -9,6 +9,28 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 </head>
 <body>
+
+<header class="menu-bar">
+        <h1>Space Exploration</h1>
+        <div class="burger-menu" onclick="toggleMenu()">☰</div>
+
+
+        <div id="mobile-menu" class="mobile-menu">
+            @if (Auth::user()->role == 'gestionnaire')
+                <form action="{{route('dataAstronaute')}}" method="GET">
+                    @csrf
+                    <button type="submit" class="nav-button active" id="dataAstro">Vue astronaute</button>
+                </form>
+            @endif
+
+        <form action="{{route('auth.logout')}}" method="POST">
+            @method("delete")
+            @csrf
+            <button type="submit" class="nav-button active" id="logout">Log out</button>
+        </form>
+        </div>    
+    </header>
+
 <div class="container">
     <h1>Tableau de Bord Chercheur</h1>
 

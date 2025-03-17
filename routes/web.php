@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\dataAstro;
 use App\Http\Controllers\DataCher;
 use App\Http\Controllers\dataGestionnaire;
+use App\Http\Controllers\DataVaisseaux;
 
 // Route pour afficher la page d'accueil
 Route::get('/', function () {
@@ -39,11 +40,32 @@ Route::middleware(['role:astronaute'=>CheckAstronaute::class])->group(function (
     Route::get('/dataAstronaute', [DataAstro::class, 'index'])->name('dataAstronaute');
     Route::get('/dataAstronaute/data', [DataAstro::class, 'getMissions'])->name('data');
     Route::get('/dataAstronaute/liste', [DataAstro::class, 'getAstronautes'])->name('liste');
+    Route::get('/dataAstronaute/vaisseaux', [DataAstro::class, 'getVaisseaux'])->name('getVaisseaux');
+    Route::get('/dataAstronaute/sitesLancement', [DataAstro::class, 'getSitesLancement'])->name('getSitesLancement');
 });
 
 Route::middleware(['role:chercheur' => CheckChercheur::class])->group(function () {
-    Route::get('/data_chercheur', [DataCher::class, 'index'])->name('data_chercheur');
+Route::get('/data_chercheur', [DataCher::class, 'index'])->name('data_chercheur');
 
+// Routes ajout astro
+Route::middleware(['isGestionnaire'=>CheckGestionnaire::class])->group( function (){
+    Route::get('/dataAstronaute/ajout', [DataGestionnaire::class, 'ajoutAstronaute'])->name('ajoutAstronaute');
+    Route::post('/dataAstronaute/ajout',[DataGestionnaire::class, 'storeAstronaute'])->name('storeAstronaute');
+    Route::get('/dataAstronaute/modification',[DataGestionnaire::class, 'modifyAstronaute'])->name('modifyAstronaute');
+    Route::put('/dataAstronaute/modification',[DataGestionnaire::class, 'modifyAstronaute'])->name('modifyAstronaute');
+    Route::get('/dataAstronaute/suppression',[DataGestionnaire::class, 'deleteAstronaute'])->name('deleteAstronaute');
+    Route::delete('/dataAstronaute/suppression',[DataGestionnaire::class, 'deleteAstronaute'])->name('deleteAstronaute');
+
+    Route::get('/ajoutMission', [DataGestionnaire::class, 'ajoutMission'])->name('ajoutMission');
+    Route::post('/ajoutMission', [DataGestionnaire::class, 'createMission'])->name('createMission');
+    Route::post('/ajoutMission/attribution', [DataGestionnaire::class, 'attribueMission'])->name('attribueMission');
+
+    Route::get('/ajoutVaisseau', [DataAstro::class, 'ajoutVaisseau'])->name('ajoutVaisseau');
+    Route::post('/ajoutVaisseau/store', [DataVaisseaux::class, 'storeVaisseau'])->name('storeVaisseau');
+    Route::get('/ajoutVaisseau/delete', [DataVaisseaux::class, 'deleteVaisseau']);
+    Route::delete('/ajoutVaisseau/delete', [DataVaisseaux::class, 'deleteVaisseau'])->name('deleteVaisseau');
+
+});
     
 Route::get('/formExperience', [DataCher::class, 'createExperience'])->name('formExperience');
 Route::post('/formExperience', [DataCher::class, 'storeExperience'])->name('storeExperience');

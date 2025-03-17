@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sitelancement;
+use App\Models\Vaisseauspatial;
 use App\Models\VueMissionsAstronaute;
 use App\Models\VueAstronauteAgence;
 use Illuminate\Http\JsonResponse;
@@ -20,7 +22,7 @@ class dataAstro extends Controller
         if ($request->ajax()) {
             $query = VueMissionsAstronaute::query()
                 ->select([
-                    'idAstro',
+                    //'idAstro',
                     'nomAstro',
                     'prenomAstro',
                     'nomMission',
@@ -56,8 +58,8 @@ class dataAstro extends Controller
         if ($request->ajax()) {
             $query = VueAstronauteAgence::query()
                 ->select([
-                    'nom_astronaute',
-                    'prenom_astronaute',
+                    'nomAstro',
+                    'prenomAstro',
                     'nationalite',
                     'nombreMissions',
                     'Poste',
@@ -69,5 +71,53 @@ class dataAstro extends Controller
         }
 
         return response()->json(['error' => 'Invalid request'], 400);
+    }
+
+    function getVaisseaux(Request $request): JsonResponse
+    {
+        if ($request->ajax()) {
+            $query = Vaisseauspatial::query()
+                ->select([
+                    'nomVaisseau',
+                    'premierVol',
+                    'dernierVol',
+                    'etat',
+                    'technologie',
+                    'fabricant',
+                ]);
+
+            return DataTables::of($query)
+                ->editColumn('premierVol', function ($row) {
+                    return $row->premierVol ? $row->premierVol->format('d-m-Y') : 'N/A';
+                })
+                ->editColumn('dernierVol', function ($row) {
+                    return $row->dernierVol ? $row->dernierVol->format('d-m-Y') : 'N/A';
+                })
+                ->make(true);
+        }
+
+        return response()->json(['error' => 'Invalid request'], 400);
+    }
+
+    function getSitesLancement(Request $request): JsonResponse
+    {
+        if ($request->ajax()) {
+            $query = Sitelancement::query()
+                ->select([
+                    'adresse',
+                    'pays',
+                ]);
+
+            return DataTables::of($query)
+                ->make(true);
+        }
+
+        return response()->json(['error' => 'Invalid request'], 400);
+    }
+
+    function ajoutVaisseau()
+    {
+        return view('vueAjoutVaisseaux');
+        //return view('dataAstronaute.vaisseaux.ajout');
     }
 }

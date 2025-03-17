@@ -50,9 +50,7 @@
 
 <!-- LE SHOW -->
 
-<audio id="background-music" autoplay>
-    <source src="{{ asset('audio/starwars-theme.mp3') }}" type="audio/mp3">
-    Votre navigateur ne supporte pas l'élément audio.
+<audio id="background-music" src="{{ asset('audio/binary_sunset.mp4') }}">
 </audio>
 
 <section class="intro">
@@ -177,14 +175,6 @@ Rejoignez l’Alliance et prenez part à l’aventure ultime. Accédez aux missi
 Que la science soit avec vous… <br> Et ce pour toujours.</p>        
   </div>  
 </div>
-
-<script>
-    document.getElementById("play-music").addEventListener("click", function() {
-        const audio = document.getElementById("background-music");
-        audio.play();
-        this.style.display = "none"; // Masquer le bouton après activation
-    });
-</script>
 
  <script src="{{ asset('js/loader.js') }}"></script>
  <script src="{{ asset('js/menu.js') }}"></script>
