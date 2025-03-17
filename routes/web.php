@@ -3,6 +3,7 @@
 
 use App\Http\Middleware\CheckAstronaute;
 use App\Http\Middleware\CheckChercheur;
+use App\Http\Middleware\CheckGestionnaire;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;

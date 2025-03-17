@@ -1,7 +1,10 @@
 body {
     font-family: 'Arial', sans-serif;
-    margin:50px;
-}    
+    margin: 0;
+    padding-top: 100px;
+    background-color: #0a0a0a;
+    color: rgb(132, 216, 255);
+}  
 
 .container{
     display: flex;
@@ -13,7 +16,7 @@ body {
 }
 
 #astronauteTable{
-    width: 100%;
+    width: 100% !important;
     margin-top: 50px;
     border-collapse: collapse;
     border-spacing: 0;
@@ -30,13 +33,12 @@ table.dataTable {
     border-spacing: 0;
 }
 
-/* Barre de menu principale */
 .menu-bar {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(5px);
     text-align: center;
-    padding: 15px 20px;
-    font-size: 12px;
+    padding: 15px;
+    font-size: 14px;
     font-weight: bold;
     position: fixed;
     width: 100%;
@@ -45,11 +47,10 @@ table.dataTable {
     display: flex;
     align-items: center;
     z-index: 1000;
+    justify-content: space-between;
     padding-left: 30px;
     padding-right: 30px;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
+    box-shadow: 0 0 15px #00eaff;
 }
 
 /* Titre du menu */
@@ -57,7 +58,7 @@ table.dataTable {
     font-family: 'Audiowide', sans-serif;
     color: #00eaff;
     text-transform: uppercase;
-    text-shadow: 0 0 3px #00eaff, 0 0 6px #0088ff, 0 0 12px #0055ff;
+    text-shadow: 0 0 5px #00eaff, 0 0 10px #0088ff;
     margin: 0;
     font-size: 24px;
 }
@@ -154,6 +155,7 @@ table.dataTable {
 
 h1 {
     margin-top: 70px;
+    text-align: center;
 }
 
 /* Barre de menu principale */
@@ -260,6 +262,7 @@ h1 {
 
     .burger-menu {
         display: block;
+        margin-right:50px;
     }
 }
 
@@ -284,6 +287,11 @@ h1 {
     margin-top: 100px;
 }
 
+.container {
+    width: 90%;
+    margin: auto;
+    padding-bottom: 50px;
+}
 
 label {
     display: block;
@@ -337,3 +345,225 @@ button:hover {
 .link:hover {
     color: #fff;
 }
+
+h1 {
+    font-family: 'Audiowide', sans-serif;
+}
+
+.banniere {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    border-bottom: 2px solid #00eaff;
+    padding-bottom: 10px;
+}
+
+.banniere>.nav-button{
+    height:50%;
+}
+
+    /* Table style */
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        background: rgb(117 190 225);
+        box-shadow: 0 0 20px rgb(7 255 255 / 70%);
+        color: #000000;
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: left;
+    }
+
+    th, td {
+        padding: 15px;
+        border-bottom: 1px solid #00eaff;
+    }
+
+    th {
+        background-color: rgba(0, 255, 255, 0.2);
+        text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(0, 255, 255, 0.1);
+    }
+
+    tr:hover {
+        background-color: rgba(0, 255, 255, 0.3);
+        transition: 0.3s;
+        box-shadow: 0 0 10px #00eaff;
+    }
+
+    /* Responsive styling */
+    @media screen and (max-width: 768px) {
+        .menu-bar {
+            font-family: 'Audiowide', sans-serif;
+            flex-direction: row;
+            text-align: center;
+            justify-content: space-between;
+        }
+
+        .banniere {
+            flex-direction: row;
+            text-align: center;
+        }
+
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        
+        /* Menu burger (caché par défaut) */
+        #mobile-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #00eaff;
+        }
+
+        .user-info{
+            display: none;
+        }
+
+        
+    }
+
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 4px;
+}
+
+.hello {
+    text-align: center;
+}
+
+#missionsTable{
+    width: 100% !important;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Header avec vidéo en fond */
+.header-banner {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Ajuste la hauteur selon tes besoins */
+    overflow: hidden;
+}
+
+.header-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Superposition semi-transparente */
+.header-banner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajuste l'opacité ici */
+    z-index: 1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-family: 'Audiowide', sans-serif;
+    text-shadow: 0 0 5px #00eaff, 0 0 10px #0088ff;
+    padding: 20px;
+}
+
+.infos-connexion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    border-bottom: 2px solid #00eaff;
+    padding-bottom: 10px;
+}
+
+/* Bloc d'informations utilisateur */
+.user-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6); /* Fond semi-transparent */
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Audiowide', sans-serif;
+    text-shadow: 0 0 3px #00eaff, 0 0 5px #0088ff;
+    border: 1px solid #00eaff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+#logout{
+    margin: 0;
+}
+
+
+/* Afficher le menu quand activé */
+#mobile-menu.show {
+    display: block;
+}
+
+/* Style du bouton logout dans le menu */
+#mobile-menu .nav-button {
+    margin-right: 60px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: #00eaff;
+    color: black;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: none;
+}
+

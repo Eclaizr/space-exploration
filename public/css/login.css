@@ -1,5 +1,6 @@
 /* Barre de menu principale */
 .menu-bar {
+    font-family: 'Audiowide', sans-serif;
     background-color: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(5px);
     text-align: center;
@@ -31,6 +32,7 @@
 }
 
 .menu-bar h1 a {
+    font-family: 'Audiowide', sans-serif;
     text-decoration: none;
     color: #00eaff;
 }
@@ -126,7 +128,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: url('../images/free_man.jpeg') no-repeat center center fixed;
     background-size: cover;
     display: flex;
@@ -256,4 +258,6 @@ button:hover {
     font-size: 12px;
     font-weight: bold;
 }
+
+
 

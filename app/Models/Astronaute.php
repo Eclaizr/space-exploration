@@ -29,13 +29,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Astronaute extends Model
 {
-	protected $table = 'astronaute';
+	protected $table = 'exploration_spatiale.astronaute';
 	protected $primaryKey = 'idAstro';
 	public $timestamps = false;
 
 	protected $casts = [
+		'nomAstro' => 'string',
+		'prenomAstro' => 'string',
 		'dateNaissanceAstro' => 'datetime',
-		'nombreMissions' => 'int'
+		'nationalite' => 'string',
+		'nombreMissions' => 'int',
+		'Poste' => 'string',
+		'statut' => 'string',
 	];
 
 	protected $fillable = [
