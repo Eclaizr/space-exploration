@@ -6,6 +6,9 @@ body {
     color: rgb(159, 240, 143);
 }  
 
+a {
+    text-decoration: none;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -58,7 +61,7 @@ table.dataTable {
     font-family: 'Audiowide', sans-serif;
     color: rgb(159, 240, 143);
     text-transform: uppercase;
-    text-shadow: 0 0 5px rgb(159, 240, 143), 0 0 10px #0088ff;
+    text-shadow: 0 0 3px rgb(159, 240, 143), 0 0 6px #0b5b00, 0 0 12px #76ca47;
     margin: 0;
     font-size: 24px;
 }
@@ -160,7 +163,7 @@ h1 {
 
 /* Barre de menu principale */
 .menu-bar {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(5px);
     text-align: center;
     padding: 15px 20px;
@@ -173,6 +176,7 @@ h1 {
     display: flex;
     align-items: center;
     z-index: 1000;
+    justify-content: space-between;
     padding-left: 30px;
     padding-right: 30px;
     flex-direction: row;
@@ -185,7 +189,7 @@ h1 {
     font-family: 'Audiowide', sans-serif;
     color: rgb(159, 240, 143);
     text-transform: uppercase;
-    text-shadow: 0 0 3px rgb(159, 240, 143), 0 0 6px #0088ff, 0 0 12px #0055ff;
+    text-shadow: 0 0 3px rgb(159, 240, 143), 0 0 6px #0b5b00, 0 0 12px #76ca47;
     margin: 0;
     font-size: 24px;
 }
@@ -323,7 +327,6 @@ button {
     border: none;
     color: white;
     font-size: 12px;
-    margin-top: 20px;
     cursor: pointer;
     border-radius: 5px;
     transition: 0.3s;
@@ -511,7 +514,7 @@ h1 {
     color: white;
     font-size: 24px;
     font-family: 'Audiowide', sans-serif;
-    text-shadow: 0 0 5px rgb(159, 240, 143), 0 0 10px #0088ff;
+    text-shadow: 0 0 5px rgb(159, 240, 143), 0 0 10px #000;
     padding: 20px;
 }
 
@@ -553,9 +556,7 @@ h1 {
 
 /* Style du bouton logout dans le menu */
 #mobile-menu .nav-button {
-    margin-right: 60px;
     display: block;
-    width: 100%;
     padding: 10px;
     text-align: center;
     background: rgb(159, 240, 143);
@@ -610,3 +611,25 @@ h1 {
     border-radius: 5px; /* Rounded corners */
     margin-left: 10px; /* Space to the left of the select */
 }
+
+.mobile-menu > form > button{
+    width: 124px;
+}
+
+/* affichage des boutons en grand écran*/
+@media screen and (min-width: 768px){
+    .mobile-menu{
+        display: block ruby;
+    }
+
+    #mobile-menu.show{
+        display: block ruby !important;
+    }
+
+    .mobile-menu > * {
+        margin:0;
+        margin-right: 10px;
+    }
+}
+
+
