@@ -7,22 +7,27 @@
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('css/dataChercheur.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("mobile-menu").classList.toggle("show");
+        }
+    </script>
+
 </head>
 <body>
 
-<header class="menu-bar">
+    <!-- MENU HEADER -->
+    <header class="menu-bar">
         <h1>Space Exploration</h1>
         <div class="burger-menu" onclick="toggleMenu()">☰</div>
 
 
         <div id="mobile-menu" class="mobile-menu">
-            @if (Auth::user()->role == 'gestionnaire')
-                <form action="{{route('dataAstronaute')}}" method="GET">
-                    @csrf
-                    <button type="submit" class="nav-button active" id="dataAstro">Vue astronaute</button>
-                </form>
-            @endif
-
         <form action="{{route('auth.logout')}}" method="POST">
             @method("delete")
             @csrf
@@ -30,6 +35,25 @@
         </form>
         </div>    
     </header>
+
+     <!-- HEADER AVEC VIDÉO EN BACKGROUND -->
+     <header class="header-banner">
+        <video autoplay loop muted playsinline class="header-video">
+            <source src="{{ asset('videos/14-135703617_medium.mp4') }}" type="video/mp4">
+            Votre navigateur ne supporte pas les vidéos HTML5.
+        </video>
+        <div class="header-content">
+            <h1>DASHBOARD</h1>
+        </div>
+        <!-- Bloc Informations de Connexion -->
+        @if (Auth::check())
+        <div class="user-info">
+            <p><strong>Utilisateur :</strong> {{ Auth::user()->username }}</p>
+            <p><strong>Rôle :</strong> {{ Auth::user()->role }}</p>
+        </div>
+        @endif
+    </header>
+
 
 <div class="container">
     <h1>Tableau de Bord Chercheur</h1>
@@ -39,30 +63,28 @@
     <table id="missionsNonHabiteesTable" class="display">
         <thead>
         <tr>
-            <th>Nom de l'Objet</th>
-            <th>Distance de la Terre (UA)</th>
-            <th>Révolution (jours)</th>
-            <th>Année de Découverte</th>
-            <th>Agence Spatiale</th>
-            <th>Nombre de Missions</th>
+            <th>Nom de la Mission</th>
+            <th>Date de Départ</th>
+            <th>Date de Retour</th>
+            <th>Objectif</th>
+            <th>Statut</th>
         </tr>
         </thead>
         <tbody>
         @foreach($missionsNonHabitees as $mnh)
             <tr>
-                <td>{{ $mnh->nomObjet }}</td>
-                <td>{{ $mnh->distanceTerre }}</td>
-                <td>{{ $mnh->revolution }}</td>
-                <td>{{ $mnh->anneeDecouverte }}</td>
-                <td>{{ $mnh->nomAgence }}</td>
-                <td>{{ $mnh->nombreMissions }}</td>
+                <td>{{ $mnh->nomMission }}</td>
+                <td>{{ $mnh->dateDepart }}</td>
+                <td>{{ $mnh->dateRetour }}</td>
+                <td>{{ $mnh->objectif }}</td>
+                <td>{{ $mnh->statut }}</td>
             </tr>
         @endforeach
         </tbody>
     </table>
 
     <!-- 2) Missions Habitées -->
-    <h2>Missions Habitées</h2>
+    <h2>Objets Explorés</h2>
     <table id="missionsHabiteesTable" class="display">
         <thead>
         <tr>
@@ -75,14 +97,14 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($missionsHabitees as $mh)
+        @foreach($objetsExplores as $oe)
             <tr>
-                <td>{{ $mh->nomObjet }}</td>
-                <td>{{ $mh->distanceTerre }}</td>
-                <td>{{ $mh->revolution }}</td>
-                <td>{{ $mh->anneeDecouverte }}</td>
-                <td>{{ $mh->nomAgence }}</td>
-                <td>{{ $mh->nombreMissions }}</td>
+                <td>{{ $oe->nomObjet }}</td>
+                <td>{{ $oe->distanceTerre }}</td>
+                <td>{{ $oe->revolution }}</td>
+                <td>{{ $oe->anneeDecouverte }}</td>
+                <td>{{ $oe->nomAgence }}</td>
+                <td>{{ $oe->nombreMissions }}</td>
             </tr>
         @endforeach
         </tbody>
@@ -95,7 +117,7 @@
         <tr>
             <th>Nom de la Planète</th>
             <th>Distance de la Terre (UA)</th>
-            <th>Indice d'Habitabilité</th>
+            <th><a href="https://fr.wikipedia.org/wiki/Indice_de_similarit%C3%A9_avec_la_Terre" >Indice d'Habitabilité</a></th>
             <th>Nombre de Missions</th>
         </tr>
         </thead>
@@ -112,7 +134,7 @@
     </table>
 
     <!-- 4) Expériences Scientifiques -->
-    <h2>Expériences Scientifiques <a href="/formExperience">Ajouter</a></h2>
+    <h2>Expériences Scientifiques <a href="/formExperience" class="nav-button">Ajouter</a></h2>
     <table id="experiencesTable" class="display">
         <thead>
         <tr>
@@ -135,7 +157,7 @@
     </table>
 
     <!-- 5) Objets Découverts -->
-    <h2>Objets Découverts <a href="/formObjetDecouvert">Ajouter</a></h2>
+    <h2>Objets Découverts <a href="/formObjetDecouvert" class="nav-button">Ajouter</a></h2>
     <table id="objetsDecouvertsTable" class="display">
         <thead>
         <tr>

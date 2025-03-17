@@ -1,0 +1,612 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding-top: 70px;
+    background-color: #1f1d1d;
+    color: rgb(159, 240, 143);
+}  
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-element{
+    flex:1;
+}
+
+#astronauteTable{
+    width: 100% !important;
+    margin-top: 50px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid #111;
+}
+
+table.dataTable {
+    margin: 0 auto;
+    clear: both;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.menu-bar {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-shadow: 0 0 15px rgb(159, 240, 143);;
+}
+
+/* Titre du menu */
+.menu-bar h1 {
+    font-family: 'Audiowide', sans-serif;
+    color: rgb(159, 240, 143);
+    text-transform: uppercase;
+    text-shadow: 0 0 5px rgb(159, 240, 143), 0 0 10px #0088ff;
+    margin: 0;
+    font-size: 24px;
+}
+
+.menu-bar h1 a {
+    text-decoration: none;
+    color: rgb(159, 240, 143);;
+}
+
+/* Navigation */
+.nav-links {
+    display: flex;
+    gap: 15px; /* Ajoute un espace entre les boutons */
+}
+
+/* Boutons du menu */
+.nav-button {
+    font-family: 'Orbitron', sans-serif;
+    text-decoration: none;
+    font-size: 12px; /* Taille uniforme */
+    color: rgb(159, 240, 143);
+    padding: 8px 16px;
+    border: 2px solid rgb(159, 240, 143);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Effet lumineux au survol */
+.nav-button:hover {
+    background: rgb(159, 240, 143);
+    color: black;
+    box-shadow: 0 0 10px rgb(159, 240, 143);
+}
+
+/* Bouton actif */
+.nav-button.active {
+    background: rgb(159, 240, 143);
+    color: black;
+}
+
+/* Menu burger (caché sur grand écran) */
+.burger-menu {
+    display: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: rgb(159, 240, 143);
+}
+
+/* Version Mobile*/
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    /* Afficher le menu quand activé */
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-button {
+        display: block;
+        padding: 8px;
+        text-align: center;
+        width: 100px;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+}
+
+/* Softer Pulsating Neon Glow */
+@keyframes neonPulsate {
+    from {
+        text-shadow:
+            0 0 3px rgb(159, 240, 143),
+            0 0 7px #0088ff,
+            0 0 12px #0055ff;
+    }
+    to {
+        text-shadow:
+            0 0 4px #00ffff,
+            0 0 8px rgb(159, 240, 143),
+            0 0 14px #0066ff;
+    }
+}
+
+h1 {
+    margin-top: 70px;
+    text-align: center;
+}
+
+/* Barre de menu principale */
+.menu-bar {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    padding-left: 30px;
+    padding-right: 30px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+/* Titre du menu */
+.menu-bar h1 {
+    font-family: 'Audiowide', sans-serif;
+    color: rgb(159, 240, 143);
+    text-transform: uppercase;
+    text-shadow: 0 0 3px rgb(159, 240, 143), 0 0 6px #0088ff, 0 0 12px #0055ff;
+    margin: 0;
+    font-size: 24px;
+}
+
+.menu-bar h1 a {
+    text-decoration: none;
+    color: rgb(159, 240, 143);
+}
+
+/* Navigation */
+.nav-links {
+    display: flex;
+    gap: 15px; /* Ajoute un espace entre les boutons */
+}
+
+/* Boutons du menu */
+.nav-button {
+    font-family: 'Orbitron', sans-serif;
+    text-decoration: none;
+    font-size: 12px; /* Taille uniforme */
+    color: rgb(159, 240, 143);
+    padding: 8px 16px;
+    border: 2px solid rgb(159, 240, 143);
+    border-radius: 5px;
+    transition: 0.3s;
+
+}
+
+/* Effet lumineux au survol */
+.nav-button:hover {
+    background: rgb(159, 240, 143);
+    color: black;
+    box-shadow: 0 0 10px rgb(159, 240, 143);
+}
+
+/* Bouton actif */
+.nav-button.active {
+    background: rgb(159, 240, 143);
+    color: black;
+}
+
+/* Menu burger (caché sur grand écran) */
+.burger-menu {
+    display: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: rgb(159, 240, 143);
+}
+
+/* Version Mobile*/
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    /* Afficher le menu quand activé */
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-button {
+        display: block;
+        padding: 8px;
+        text-align: center;
+        width: 100px;
+    }
+
+    .burger-menu {
+        display: block;
+        margin-right:50px;
+    }
+}
+
+/* Softer Pulsating Neon Glow */
+@keyframes neonPulsate {
+    from {
+        text-shadow:
+            0 0 3px rgb(159, 240, 143),
+            0 0 7px #0088ff,
+            0 0 12px #0055ff;
+    }
+    to {
+        text-shadow:
+            0 0 4px #00ffff,
+            0 0 8px rgb(159, 240, 143),
+            0 0 14px #0066ff;
+    }
+}
+
+/* Push content down to avoid overlap */
+.login-container {
+    margin-top: 100px;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding-bottom: 50px;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    text-align: left;
+    margin: 10px 0 5px;
+    color: #bbb;
+}
+
+input {
+    width:94%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+}
+
+input::placeholder {
+    color: #bbb;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #0066ff, #00ccff);
+    border: none;
+    color: white;
+    font-size: 12px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #00ccff, #0066ff);
+}
+
+.link {
+    display: block;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #00ccff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.link:hover {
+    color: #fff;
+}
+
+h1 {
+    font-family: 'Audiowide', sans-serif;
+}
+
+.banniere {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    border-bottom: 2px solid rgb(159, 240, 143);
+    padding-bottom: 10px;
+}
+
+.banniere>.nav-button{
+    height:50%;
+}
+
+    /* Table style */
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        background:rgb(125, 207, 108);
+        box-shadow: 0 0 20px rgba(7, 255, 81, 0.7);
+        color: #000000;
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: left;
+    }
+
+    th, td {
+        padding: 15px;
+        border-bottom: 1px solid rgb(159, 240, 143);
+    }
+
+    th {
+        background-color: rgba(0, 255, 255, 0.2);
+        text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(0, 255, 255, 0.1);
+    }
+
+    tr:hover {
+        background-color: rgba(0, 255, 255, 0.3);
+        transition: 0.3s;
+        box-shadow: 0 0 10px rgb(159, 240, 143);
+    }
+
+    /* Responsive styling */
+    @media screen and (max-width: 768px) {
+        .menu-bar {
+            font-family: 'Audiowide', sans-serif;
+            flex-direction: row;
+            text-align: center;
+            justify-content: space-between;
+        }
+
+        .banniere {
+            flex-direction: row;
+            text-align: center;
+        }
+
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        
+        /* Menu burger (caché par défaut) */
+        #mobile-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgb(159, 240, 143);
+        }
+
+        .user-info{
+            display: none;
+        }
+
+        
+    }
+
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 4px;
+}
+
+.hello {
+    text-align: center;
+}
+
+#missionsTable{
+    width: 100% !important;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Header avec vidéo en fond */
+.header-banner {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Ajuste la hauteur selon tes besoins */
+    overflow: hidden;
+}
+
+.header-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Superposition semi-transparente */
+.header-banner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajuste l'opacité ici */
+    z-index: 1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-family: 'Audiowide', sans-serif;
+    text-shadow: 0 0 5px rgb(159, 240, 143), 0 0 10px #0088ff;
+    padding: 20px;
+}
+
+.infos-connexion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    border-bottom: 2px solid rgb(159, 240, 143);
+    padding-bottom: 10px;
+}
+
+/* Bloc d'informations utilisateur */
+.user-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6); /* Fond semi-transparent */
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Audiowide', sans-serif;
+    text-shadow: 0 0 3px rgb(159, 240, 143), 0 0 5px #0088ff;
+    border: 1px solid rgb(159, 240, 143);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+#logout{
+    margin: 0;
+}
+
+
+/* Afficher le menu quand activé */
+#mobile-menu.show {
+    display: block;
+}
+
+/* Style du bouton logout dans le menu */
+#mobile-menu .nav-button {
+    margin-right: 60px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: rgb(159, 240, 143);
+    color: black;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* Pagination buttons */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: rgb(159, 240, 143) !important; /* Text color */
+    border: 1px solid rgb(159, 240, 143); /* Border color */
+    background-color: rgba(0, 0, 0, 0.5); /* Background color */
+    padding: 5px 10px; /* Padding */
+    margin: 0 2px; /* Margin between buttons */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: rgb(159, 240, 143); /* Background color on hover */
+    color: black !important; /* Text color on hover */
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: rgb(159, 240, 143); /* Background color for the current page */
+    color: black !important; /* Text color for the current page */
+    border: 1px solid black; /* Border color for the current page */
+}
+
+/* Pagination container */
+.dataTables_wrapper .dataTables_paginate {
+    text-align: center; /* Center align the pagination */
+    margin-top: 20px; /* Space above the pagination */
+}
+
+/* Pagination info */
+.dataTables_wrapper .dataTables_info {
+    color: whitesmoke; /* Text color for pagination info */
+    margin-top: 10px; /* Space above the pagination info */
+}
+
+/* Pagination length select */
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid white; /* Border color */
+    background-color: rgba(0, 0, 0, 0.5); /* Background color */
+    color: white; /* Text color */
+    padding: 5px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    margin-left: 10px; /* Space to the left of the select */
+}

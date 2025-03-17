@@ -4,11 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajouter un Objet Découvert</title>
+    <link rel="stylesheet" href="{{ asset('css/ajoutchercheur.css') }}">
+    <script>
+        function validateForm() {
+            const currentYear = new Date().getFullYear();
+            const anneeDecouverte = document.getElementById('anneeDecouverte').value;
+
+            if (anneeDecouverte > currentYear) {
+                alert('L\'année de découverte doit être inférieure ou égale à l\'année actuelle.');
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
-<div class="container">
+<div class="form-container">
     <h1>Ajouter un Objet Découvert</h1>
-    <form action="{{ route('storeObjetDecouvert') }}" method="POST">
+    <form action="{{ route('storeObjetDecouvert') }}" method="POST" onsubmit="return validateForm()">
         @csrf
         <label for="nomObjet">Nom de l'Objet:</label>
         <input type="text" id="nomObjet" name="nomObjet" required maxlength="255">
@@ -22,18 +35,22 @@
         <label for="anneeDecouverte">Année de Découverte:</label>
         <input type="number" id="anneeDecouverte" name="anneeDecouverte" required>
         
-        <label for="agenceDecouvreuse">Agence Découvreuse :</label>
-            <select name="agenceDecouvreuse" id="agenceDecouvreuse" required>
-                <option value="">-- Sélectionnez une agence --</option>
-                <option value="CNSA">CNSA</option>
-                <option value="ESA">ESA</option>
-                <option value="ISRO">ISRO</option>
-                <option value="JAXA">JAXA</option>
-                <option value="NASA">NASA</option>
-                <option value="Roscosmos">Roscosmos</option>
-            </select>
+        <label for="agenceDecouvreuse">Agence:</label>
+        <select name="agenceDecouvreuse" id="agenceDecouvreuse" required>
+            <option value="">-- Sélectionnez une agence --</option>
+            <option value="CNSA">CNSA</option>
+            <option value="ESA">ESA</option>
+            <option value="ISRO">ISRO</option>
+            <option value="JAXA">JAXA</option>
+            <option value="NASA">NASA</option>
+            <option value="Roscosmos">Roscosmos</option>
+        </select>
         <button type="submit">Ajouter</button>
     </form>
 </div>
+<video autoplay muted loop id="background-video">
+    <source src="{{ asset('videos/150604-798876986_large.mp4') }}" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo HTML5.
+</video>
 </body>
 </html>
