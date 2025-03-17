@@ -63,23 +63,21 @@
     <table id="missionsNonHabiteesTable" class="display">
         <thead>
         <tr>
-            <th>Nom de l'Objet</th>
-            <th>Distance de la Terre (UA)</th>
-            <th>Révolution (jours)</th>
-            <th>Année de Découverte</th>
-            <th>Agence Spatiale</th>
-            <th>Nombre de Missions</th>
+            <th>Nom de la Mission</th>
+            <th>Date de Départ</th>
+            <th>Date de Retour</th>
+            <th>Objectif</th>
+            <th>Statut</th>
         </tr>
         </thead>
         <tbody>
         @foreach($missionsNonHabitees as $mnh)
             <tr>
-                <td>{{ $mnh->nomObjet }}</td>
-                <td>{{ $mnh->distanceTerre }}</td>
-                <td>{{ $mnh->revolution }}</td>
-                <td>{{ $mnh->anneeDecouverte }}</td>
-                <td>{{ $mnh->nomAgence }}</td>
-                <td>{{ $mnh->nombreMissions }}</td>
+                <td>{{ $mnh->nomMission }}</td>
+                <td>{{ $mnh->dateDepart }}</td>
+                <td>{{ $mnh->dateRetour }}</td>
+                <td>{{ $mnh->objectif }}</td>
+                <td>{{ $mnh->statut }}</td>
             </tr>
         @endforeach
         </tbody>
@@ -99,14 +97,14 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($missionsHabitees as $mh)
+        @foreach($objetsExplores as $oe)
             <tr>
-                <td>{{ $mh->nomObjet }}</td>
-                <td>{{ $mh->distanceTerre }}</td>
-                <td>{{ $mh->revolution }}</td>
-                <td>{{ $mh->anneeDecouverte }}</td>
-                <td>{{ $mh->nomAgence }}</td>
-                <td>{{ $mh->nombreMissions }}</td>
+                <td>{{ $oe->nomObjet }}</td>
+                <td>{{ $oe->distanceTerre }}</td>
+                <td>{{ $oe->revolution }}</td>
+                <td>{{ $oe->anneeDecouverte }}</td>
+                <td>{{ $oe->nomAgence }}</td>
+                <td>{{ $oe->nombreMissions }}</td>
             </tr>
         @endforeach
         </tbody>

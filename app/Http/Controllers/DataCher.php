@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\VueMissionsNonHabitees;
-use App\Models\VueMissionsHabitees;
+use App\Models\VueObjetsExplores;
 use App\Models\VuePlanetesHabitables;
 use App\Models\VueExperiences;
 use App\Models\VueObjetsDecouvert;
@@ -20,20 +20,19 @@ class DataCher extends Controller
     public function index()
     {
         $missionsNonHabitees = VueMissionsNonHabitees::all();
-        $missionsHabitees    = VueMissionsHabitees::all();
+        $objetsExplores      = VueObjetsExplores::all();
         $planetesHabitables  = VuePlanetesHabitables::all();
-        $experiences         = Experiencescientifique::all(); // Récupérer les expériences
+        $experiences         = Experiencescientifique::all();
         $objetsDecouverts    = VueObjetsDecouvert::all();
 
         return view('data_chercheur', compact(
             'missionsNonHabitees',
-            'missionsHabitees',
+            'objetsExplores',
             'planetesHabitables',
             'experiences',
             'objetsDecouverts'
         ));
     }
-
     /**
      * Afficher le formulaire pour ajouter une expérience
      */

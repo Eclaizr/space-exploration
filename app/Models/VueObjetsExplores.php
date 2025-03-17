@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VueMissionsHabitees extends Model
+class VueObjetsExplores extends Model
 {
-    protected $table = 'vue_missions_habitees'; // Correspond au nom de la vue SQL
+    protected $table = 'vue_objets_explores'; // Correspond au nom de la vue SQL
     public $incrementing = false;
     public $timestamps = false;
 
