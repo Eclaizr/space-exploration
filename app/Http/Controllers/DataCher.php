@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use App\Models\VueMissionsNonHabitees;
 use App\Models\VueMissionsHabitees;
@@ -8,7 +10,7 @@ use App\Models\VueObjetsDecouvert;
 use Illuminate\Http\Request;
 use App\Models\Experiencescientifique;
 use App\Models\Objetceleste;
-use Illuminate\Support\Facades\DB;
+use App\Models\Agencespatiale;
 
 class DataCher extends Controller
 {
@@ -20,7 +22,7 @@ class DataCher extends Controller
         $missionsNonHabitees = VueMissionsNonHabitees::all();
         $missionsHabitees    = VueMissionsHabitees::all();
         $planetesHabitables  = VuePlanetesHabitables::all();
-        $experiences         = VueExperiences::all();
+        $experiences         = Experiencescientifique::all(); // Récupérer les expériences
         $objetsDecouverts    = VueObjetsDecouvert::all();
 
         return view('data_chercheur', compact(
@@ -37,7 +39,11 @@ class DataCher extends Controller
      */
     public function createExperience()
     {
-        return view('formExperience');
+        $typesExperience = [
+            'Horticulture', 'Géologie', 'Télécommunications', 'Informatique', 'Science', 
+            'Biologie', 'Chimie', 'Éducation', 'Médecine', 'Astrophysique', 'Autre'
+        ];
+        return view('formExperience', compact('typesExperience'));
     }
 
     /**
@@ -61,7 +67,8 @@ class DataCher extends Controller
      */
     public function createObjetDecouvert()
     {
-        return view('formObjetDecouvert');
+        $agences = Agencespatiale::all(); // Récupérer toutes les agences spatiales
+        return view('formObjetDecouvert', compact('agences'));
     }
 
     /**

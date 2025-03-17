@@ -98,8 +98,6 @@
             <th>Nom de l'Expérience</th>
             <th>Type</th>
             <th>Résultats</th>
-            <th>Mission</th>
-            <th>Agence</th>
         </tr>
         </thead>
         <tbody>
@@ -109,8 +107,6 @@
                 <td>{{ $exp->nomExperience }}</td>
                 <td>{{ $exp->typeExperience }}</td>
                 <td>{{ $exp->resultats }}</td>
-                <td>{{ $exp->nomMission }}</td>
-                <td>{{ $exp->nomAgence }}</td>
             </tr>
         @endforeach
         </tbody>
