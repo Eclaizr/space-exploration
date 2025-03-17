@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: url('../images/planete.jpg') no-repeat center center fixed;
+    background: url('../images/saturn.jpg') no-repeat center center fixed;
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -8,25 +8,37 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: rgb(31, 16, 77);
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/saturn.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.1; /* Changez cette valeur entre 0 et 1 pour ajuster l'opacité */
+    z-index: -1;
 }
 
 .form-container {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.95);
     padding: 16px;
     border-radius: 15px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
     width: 350px;
     text-align: center;
     margin-top: 100px;
-}
+  }
 
 h1 {
     margin-bottom: 20px;
     font-size: 24px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #00ccff;
+    color: #fff;
     font-family: 'Audiowide', sans-serif; /* Futuristic Space Font */
 }
 
@@ -90,7 +102,6 @@ button:hover {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: rgb(31, 16, 77);
 }
 
 .container-element{
