@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajouter un Objet Découvert</title>
+    <link rel="stylesheet" href="{{ asset('css/ajoutchercheur.css') }}">
 </head>
 <body>
-<div class="container">
+
+
+
+<div class="form-container">
     <h1>Ajouter un Objet Découvert</h1>
     <form action="{{ route('storeObjetDecouvert') }}" method="POST">
         @csrf
@@ -22,7 +26,7 @@
         <label for="anneeDecouverte">Année de Découverte:</label>
         <input type="number" id="anneeDecouverte" name="anneeDecouverte" required>
         
-        <label for="agenceDecouvreuse">Agence Découvreuse :</label>
+        <label for="agenceDecouvreuse">Agence:</label>
             <select name="agenceDecouvreuse" id="agenceDecouvreuse" required>
                 <option value="">-- Sélectionnez une agence --</option>
                 <option value="CNSA">CNSA</option>
@@ -35,5 +39,9 @@
         <button type="submit">Ajouter</button>
     </form>
 </div>
+<video autoplay muted loop id="background-video">
+    <source src="{{ asset('videos/150604-798876986_large.mp4') }}" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo HTML5.
+</video>
 </body>
 </html>
