@@ -6,6 +6,9 @@ body {
     color: rgb(159, 240, 143);
 }  
 
+a {
+    text-decoration: none;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -58,7 +61,7 @@ table.dataTable {
     font-family: 'Audiowide', sans-serif;
     color: rgb(159, 240, 143);
     text-transform: uppercase;
-    text-shadow: 0 0 5px rgb(159, 240, 143), 0 0 10px #0088ff;
+    text-shadow: 0 0 3px rgb(159, 240, 143), 0 0 6px #0b5b00, 0 0 12px #76ca47;
     margin: 0;
     font-size: 24px;
 }
@@ -186,7 +189,7 @@ h1 {
     font-family: 'Audiowide', sans-serif;
     color: rgb(159, 240, 143);
     text-transform: uppercase;
-    text-shadow: 0 0 3px rgb(159, 240, 143), 0 0 6px #0088ff, 0 0 12px #0055ff;
+    text-shadow: 0 0 3px rgb(159, 240, 143), 0 0 6px #0b5b00, 0 0 12px #76ca47;
     margin: 0;
     font-size: 24px;
 }
@@ -511,7 +514,7 @@ h1 {
     color: white;
     font-size: 24px;
     font-family: 'Audiowide', sans-serif;
-    text-shadow: 0 0 5px rgb(159, 240, 143), 0 0 10px #0088ff;
+    text-shadow: 0 0 5px rgb(159, 240, 143), 0 0 10px #000;
     padding: 20px;
 }
 
