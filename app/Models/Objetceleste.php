@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Objetceleste
  * 
+ * @property int $id
  * @property string $nomObjet
  * @property float $distanceTerre
  * @property float $revolution
@@ -28,46 +29,47 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Objetceleste extends Model
 {
-	protected $table = 'objetceleste';
-	protected $primaryKey = 'nomObjet';
-	public $incrementing = false;
-	public $timestamps = false;
+    protected $table = 'objetceleste';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
+    public $timestamps = false;
 
-	protected $casts = [
-		'distanceTerre' => 'float',
-		'revolution' => 'float',
-		'anneeDecouverte' => 'int'
-	];
+    protected $casts = [
+        'distanceTerre' => 'float',
+        'revolution' => 'float',
+        'anneeDecouverte' => 'int'
+    ];
 
-	protected $fillable = [
-		'distanceTerre',
-		'revolution',
-		'agenceDecouvreuse',
-		'anneeDecouverte'
-	];
+    protected $fillable = [
+        'nomObjet',
+        'distanceTerre',
+        'revolution',
+        'agenceDecouvreuse',
+        'anneeDecouverte'
+    ];
 
-	public function agencespatiale()
-	{
-		return $this->belongsTo(Agencespatiale::class, 'agenceDecouvreuse');
-	}
+    public function agencespatiale()
+    {
+        return $this->belongsTo(Agencespatiale::class, 'agenceDecouvreuse');
+    }
 
-	public function asteroide()
-	{
-		return $this->hasOne(Asteroide::class, 'nomObjet');
-	}
+    public function asteroide()
+    {
+        return $this->hasOne(Asteroide::class, 'nomObjet');
+    }
 
-	public function planete()
-	{
-		return $this->hasOne(Planete::class, 'nomObjet');
-	}
+    public function planete()
+    {
+        return $this->hasOne(Planete::class, 'nomObjet');
+    }
 
-	public function satellite()
-	{
-		return $this->hasOne(Satellite::class, 'nomObjet');
-	}
+    public function satellite()
+    {
+        return $this->hasOne(Satellite::class, 'nomObjet');
+    }
 
-	public function vises()
-	{
-		return $this->hasMany(Vise::class, 'nomObjet');
-	}
+    public function vises()
+    {
+        return $this->hasMany(Vise::class, 'nomObjet');
+    }
 }
