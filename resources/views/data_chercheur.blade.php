@@ -28,6 +28,12 @@
 
 
         <div id="mobile-menu" class="mobile-menu">
+        @if (Auth::user()->role == 'gestionnaire')
+                <form action="{{route('dataAstronaute')}}" method="GET">
+                    @csrf
+                    <button type="submit" class="nav-button active" id="vueChercheur">Vue astronaute</button>
+                </form>
+        @endif
         <form action="{{route('auth.logout')}}" method="POST">
             @method("delete")
             @csrf
