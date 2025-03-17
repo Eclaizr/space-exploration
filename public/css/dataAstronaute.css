@@ -107,6 +107,27 @@ table.dataTable {
     color: #00eaff;
 }
 
+.mobile-menu > form > button{
+    width: 124px;
+}
+
+/* affichage des boutons en grand écran*/
+@media screen and (min-width: 768px){
+    .mobile-menu{
+        display: block ruby;
+    }
+
+    #mobile-menu.show{
+        display: block ruby !important;
+    }
+
+    .mobile-menu > * {
+        margin:0;
+        margin-right: 10px;
+    }
+}
+
+
 /* Version Mobile*/
 @media screen and (max-width: 768px) {
     .nav-links {
@@ -323,7 +344,6 @@ button {
     border: none;
     color: white;
     font-size: 12px;
-    margin-top: 20px;
     cursor: pointer;
     border-radius: 5px;
     transition: 0.3s;
@@ -422,7 +442,7 @@ h1 {
         display: none;
         position: absolute;
         top: 60px;
-        right: 10px;
+        right: 64px;
         background: rgba(0, 0, 0, 0.9);
         padding: 10px;
         border-radius: 10px;
@@ -539,6 +559,7 @@ h1 {
     text-shadow: 0 0 3px #00eaff, 0 0 5px #0088ff;
     border: 1px solid #00eaff;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    z-index: 10;
 }
 
 #logout{
@@ -551,11 +572,13 @@ h1 {
     display: block;
 }
 
+#mobile-menu.show > * {
+    margin: 10px 0;
+}
+
 /* Style du bouton logout dans le menu */
 #mobile-menu .nav-button {
-    margin-right: 60px;
     display: block;
-    width: 100%;
     padding: 10px;
     text-align: center;
     background: #00eaff;
