@@ -2,7 +2,9 @@
 
 @section('title', 'Inscription - Space Exploration') <!-- Définir le titre de la page -->
 @section('stylesheet') <!-- Lien vers la feuille de style spécifique à la page -->
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+<link rel="stylesheet" href="{{ asset('css/loader.css') }}">
 @endsection
 
 @section('content')  <!-- Section du contenu spécifique à la page -->
@@ -33,7 +35,7 @@
             </div>
         @endif
 
-        <form name="registerForm" action="{{ route('register.submit') }}" method="POST">
+        <form name="registerForm" action="{{ route('register.submit') }}" method="POST" onsubmit="showUniverseLoader()">
             @csrf
             <label for="username">Identifiant : </label>
             <input type="text" id="username" name="username" placeholder="Choisissez un identifiant" value="{{ old('username') }}" required>
@@ -51,7 +53,7 @@
                 <option value="chercheur">Chercheur</option>
             </select>
 
-            <button type="submit">S'inscrire</button>
+            <button type="submit" onsubmit="showUniverseLoader()">S'inscrire</button>
         </form>
     </div>
 
@@ -65,4 +67,6 @@
       }
     } 
     </script> -->
+    <script src="{{ asset('js/loader.js') }}?v={{ time() }}"></script>
+    <script src="{{ asset('js/menu.js') }}?v={{ time() }}"></script>
 @endsection

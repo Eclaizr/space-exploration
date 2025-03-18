@@ -156,11 +156,6 @@ table.dataTable {
     }
 }
 
-h1 {
-    margin-top: 70px;
-    text-align: center;
-}
-
 /* Barre de menu principale */
 .menu-bar {
     background-color: rgba(0, 0, 0, 0.85);
@@ -351,6 +346,8 @@ button:hover {
 
 h1 {
     font-family: 'Audiowide', sans-serif;
+    margin-top: 70px;
+    text-align: center;
 }
 
 .banniere {
@@ -542,6 +539,7 @@ h1 {
     text-shadow: 0 0 3px rgb(159, 240, 143), 0 0 5px #0088ff;
     border: 1px solid rgb(159, 240, 143);
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    z-index: 10;
 }
 
 #logout{
@@ -632,4 +630,10 @@ h1 {
     }
 }
 
+.logo-information{
+    width: 1%;
+}
 
+option{
+    color: white;
+}

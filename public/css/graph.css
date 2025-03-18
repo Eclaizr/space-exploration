@@ -11,13 +11,13 @@
 }
 
 .bar {
-    background-color: #2a747d;;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    background-color: #47b1be;
     height: 100%;
     color: black;
     font-family: "Audiowide", sans-serif;
     border-radius: 10px;
+    padding-top: 15px;
+    padding-left: 15px;
 }
 
 .bar-container {

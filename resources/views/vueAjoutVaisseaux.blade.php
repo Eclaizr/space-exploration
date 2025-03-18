@@ -9,6 +9,11 @@
 </head>
 
 <body>
+
+    <header class="back-arrow">
+        <a href="{{ route('dataAstronaute') }}"><img src="{{ asset('images/back-arrow.png') }}" class="back-arrow"></a>
+    </header>
+
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
@@ -17,10 +22,11 @@
         {{ session('error') }}
     </div>
 
-    <div class="container">
+    <div class="container" id="conteneurVaisseau">
         <div class="container-element">
-            <h1>Ajouter un Vaisseau</h1>
             <div class="form-container">
+                <h1>Attribuer une mission à un astronaute</h1>
+
                 <form action="{{ route('storeVaisseau') }}" method="POST">
                     @csrf
                     <div>
@@ -53,9 +59,9 @@
                         <label for="site">Site de lancement :</label>
                         <select id="site" name="site" required>
                             <?php
-                            use App\Models\Sitelancement;
-                                Sitelancement::all()->each(function($site){
-                                    echo "<option value='".$site->idLancement."'>".$site->adresse."</option>";
+                                use App\Models\Sitelancement;
+                                Sitelancement::all()->each(function ($site) {
+                                    echo "<option value='" . $site->idLancement . "'>" . $site->adresse . "</option>";
                                 });
                             ?>
                         </select>
@@ -66,8 +72,9 @@
         </div>
 
         <div class="container-element">
-            <h1>Supprimer un vaisseau</h1>
             <div class="form-container">
+                <h1>Supprimer un vaisseau</h1>
+
                 <form action="{{ route('deleteVaisseau') }}" method="DELETE">
                     @csrf
                     <div>

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/dataAstronaute.css') }}">
     <link rel="stylesheet" href="{{ asset('css/graph.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
@@ -57,16 +58,16 @@
             <div class="user-info">
                 <p><strong>Utilisateur :</strong> {{ Auth::user()->username }}</p>
                 <p><strong>Rôle :</strong> {{ Auth::user()->role }}</p>
-                <img src="{{ asset('images/astronaute') }}" alt="astronaute">
             </div>
         @endif
     </header>
+    <h1>Tableau de bord astronaute</h1>
 
     <div class="container">
         <div class="banniere">
             <h2> Liste des astronautes </h2>
             @if (Auth::user()->role == 'gestionnaire')
-                <a href="{{ route('ajoutAstronaute') }}" class="nav-button">Ajouter un astronaute</a>
+                <a href="{{ route('ajoutAstronaute') }}" class="nav-button" onsubmit="showUniverseLoader()">Ajouter un astronaute</a>
             @endif
         </div>
 
@@ -86,9 +87,9 @@
         </div>
 
         <div class="banniere">
-            <h2> Liste des Missions </h2>
+            <h2> Liste des Missions attrribuées</h2>
             @if (Auth::user()->role == 'gestionnaire')
-                <a href="{{ route('ajoutMission') }}" class="nav-button">Ajouter une mission</a>
+                <a href="{{ route('ajoutMission') }}" class="nav-button" onsubmit="showUniverseLoader()">Ajouter une mission</a>
             @endif
         </div>
 
@@ -118,7 +119,7 @@
         <div class="banniere">
             <h2>Liste des vaisseaux</h2>
             @if (Auth::user()->role == 'gestionnaire')
-                <a href="{{ route('ajoutVaisseau') }}" class="nav-button">Ajouter un vaisseau</a>
+                <a href="{{ route('ajoutVaisseau') }}" class="nav-button" onsubmit="showUniverseLoader()">Ajouter un vaisseau</a>
             @endif
         </div>
 
@@ -249,6 +250,8 @@
             });
         });
     </script>
+    <script src="{{ asset('js/loader.js') }}?v={{ time() }}"></script>
+    <script src="{{ asset('js/menu.js') }}?v={{ time() }}"></script>
 </body>
 
 </html>

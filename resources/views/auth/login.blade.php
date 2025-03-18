@@ -38,7 +38,7 @@
         @enderror
 
         <!-- Ajout de onclick pour l'animation -->
-        <button type="submit" onclick="showUniverseLoader()">Connexion</button>
+        <button type="submit" onclick="showUniverseLoader()" class="btn-connexion">Connexion</button>
     </form>
 </div>
 

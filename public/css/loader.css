@@ -54,10 +54,6 @@ $i: 0;
   $i: $i+1;
 }
 
-body {
-  background-color: #4c4c4c;
-}
-
 #universe {
   z-index: 1;
   position: absolute;
