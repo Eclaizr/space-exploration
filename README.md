@@ -30,6 +30,6 @@ php artisan serve
 ```
 Then connect to it: http://localhost:8000 !
 
-Developed as part of our first-year engineering school project in Computer Science and Networks.
+Developed as part of one of our first-year engineering school projects in networks and computer science.
 
 By Ruben P. and Claire M.
