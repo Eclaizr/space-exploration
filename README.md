@@ -1,6 +1,5 @@
 # Space exploration 🚀
 
-/!\ NOT FINISHED /!\
 
 Welcome to our web application developed with Laravel to manage space agencies, missions, astronauts, and celestial objects. This application provides an intuitive interface to explore data related to space expeditions, track astronaut history, and monitor space missions! (A mix of reality and fiction)
 
