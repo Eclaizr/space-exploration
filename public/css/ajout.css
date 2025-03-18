@@ -30,7 +30,7 @@ body::before {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
     width: 350px;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 25px;
   }
 
 h1 {
@@ -99,9 +99,13 @@ button:hover {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: baseline;
     height: 100vh;
     margin: 0;
+}
+
+.container#conteneurVaisseau{
+    align-items: unset;
 }
 
 .container-element{
@@ -144,4 +148,18 @@ div#vaisseau{
 
 input#vaisseau{
     width: unset;
+}
+
+header.back-arrow{
+    width: 100%;
+        margin-left: 20px;
+        margin-top: 20px;
+}
+
+img.back-arrow{
+    width: 30px;
+}
+
+h3{
+    color: white;
 }

@@ -8,6 +8,10 @@
 </head>
 <body>
 
+    <header class="back-arrow">
+        <a href="{{ route('dataAstronaute') }}"><img src="{{ asset('images/back-arrow.png') }}" class="back-arrow"></a>
+    </header>
+
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
@@ -18,8 +22,9 @@
 
     <div class="container">
         <div class="container-element">
-            <h1>Ajouter une mission</h1>
             <div class="form-container">
+            <h1>Ajouter une mission</h1>
+
                 <form action="{{ route('createMission') }}" method="POST">
                     @csrf
                     <div>
@@ -47,6 +52,8 @@
                         <select id="statut" name="statut" required>
                             <option value="reussite">Réussite</option>
                             <option value="echec">Echec</option>
+                            <option value="en cours">En cours</option>
+                            <option value="prevision">Prevision</option>
                         </select>      
                     </div>
                     <div id="vaisseau">
@@ -66,8 +73,9 @@
         </div>
 
         <div class="container-element">
-            <h1>Attribuer une mission à un astronaute</h1>
             <div class="form-container">
+            <h1>Attribuer une mission à un astronaute</h1>
+
                 <form action="{{ route('attribueMission') }}" method="POST">
                 @csrf
                 <div id="mission">

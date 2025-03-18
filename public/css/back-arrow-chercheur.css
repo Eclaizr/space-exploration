@@ -1,0 +1,13 @@
+header.back-arrow {
+    width: 100%;
+    margin-left: 20px;
+    margin-top: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+img.back-arrow {
+    width: 30px;
+    filter: brightness(50%);
+}

@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/ajout.css') }}">
     <title>Ajouter un Astronaute</title>
 </head>
+
 <body>
 
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    <header class="back-arrow">
+        <a href="{{ route('dataAstronaute') }}"><img src="{{ asset('images/back-arrow.png') }}" class="back-arrow"></a>
+    </header>
 
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
 
     <div class="container">
         <div class="container-element">
-            <h1>Ajouter un Astronaute</h1>
+            
             <div class="form-container">
+            <h1>Ajouter un Astronaute</h1>
                 <form action="{{ route('storeAstronaute') }}" method="POST">
                     @csrf
                     <div>
@@ -59,8 +66,9 @@
             </div>
         </div>
         <div class="container-element">
-            <h1>Modifier un astronaute</br>(Le faire passer à la retraite)</h1>
             <div class="form-container">
+            <h1>Modifier un astronaute</h1></br><h3>Permet de le faire passer à la retraite</h3>
+
                 <form action="{{ route('modifyAstronaute') }}" method="PUT">
                     @csrf
                     <div>
@@ -76,8 +84,9 @@
             </div>
         </div>
         <div class="container-element">
-            <h1>Supprimer un astronaute</h1>
             <div class="form-container">
+            <h1>Supprimer un astronaute</h1>
+
                 <form action="{{ route('deleteAstronaute') }}" method="DELETE">
                     @csrf
                     <div>
@@ -95,6 +104,7 @@
 
     </div>
 
-    
+
 </body>
+
 </html>

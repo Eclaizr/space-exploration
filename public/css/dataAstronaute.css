@@ -1,8 +1,8 @@
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    padding-top: 100px;
-    background-color: #0a0a0a;
+    padding-top: 70px;
+    background-color: #222020;
     color: rgb(132, 216, 255);
 }  
 
@@ -16,6 +16,20 @@ body {
 }
 
 #astronauteTable{
+    width: 100% !important;
+    margin-top: 50px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#vaisseauTable{
+    width: 100% !important;
+    margin-top: 50px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#siteLancementTable{
     width: 100% !important;
     margin-top: 50px;
     border-collapse: collapse;
@@ -368,6 +382,8 @@ button:hover {
 
 h1 {
     font-family: 'Audiowide', sans-serif;
+    margin-top: 70px;
+    text-align: center;
 }
 
 .banniere {
@@ -589,4 +605,3 @@ h1 {
 .menu-toggle {
     display: none;
 }
-

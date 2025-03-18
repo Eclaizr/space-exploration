@@ -118,6 +118,5 @@ class dataAstro extends Controller
     function ajoutVaisseau()
     {
         return view('vueAjoutVaisseaux');
-        //return view('dataAstronaute.vaisseaux.ajout');
     }
 }

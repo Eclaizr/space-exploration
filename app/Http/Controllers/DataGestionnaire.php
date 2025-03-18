@@ -138,7 +138,7 @@ class DataGestionnaire extends Controller
             'dateDepart' => 'required|date',
             'dateRetour' => 'required|date|after_or_equal:dateDepart',
             'objectif' => 'required|string|max:255',
-            'statut' => 'required|string|in:reussite,echec',
+            'statut' => 'required|string|in:reussite,echec,en cours,prevision',
             'vaisseau' => 'required',
         ], $messages);
         

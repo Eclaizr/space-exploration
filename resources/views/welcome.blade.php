@@ -155,33 +155,32 @@
 <div id="board">  
   <div id="content">
     <p id="title">Episode I</p>
-    <p id="subtitle">L'avènement de SPACE EXPLORATION</p>
+    <p id="subtitle">L'avènement de l'exploration spatiale</p>
     <br>
     <!-- And make it cheesy ! -->
     <p>L’Univers est vaste et mystérieux… À travers les âges, les plus grands esprits de la galaxie ont tenté de percer ses secrets.<br>
 
 Aujourd’hui, une nouvelle ère d’exploration s’ouvre à vous !<br>
 
-Les Astronautes bravent l’inconnu, naviguant entre étoiles et nébuleuses, suivant leurs missions intergalactiques depuis un tableau de bord ultra-moderne.<br>
+Les astronautes bravent l’inconnu, naviguant entre étoiles et nébuleuses, suivant leurs missions intergalactiques depuis un tableau de bord ultra-moderne.<br>
 
-Les Chercheurs scrutent les confins de l’espace, découvrant des exoplanètes lointaines, des trous noirs déchaînés et des mystères gravitationnels encore jamais résolus.<br>
+Les chercheurs scrutent les confins de l’espace, découvrant des exoplanètes lointaines, des trous noirs déchaînés et des mystères gravitationnels encore jamais résolus.<br>
 
-Les gestionnaires, véritables maîtres du destin interstellaire, orchestrent les expéditions et veillent au bon fonctionnement de la flotte SPACE EXPLORATION.<br>
+Les gestionnaires, véritables maîtres du destin interstellaire, orchestrent les expéditions et veillent au bon fonctionnement de la flotte spatiale.<br>
 
 Mais l'ombre du chaos plane encore sur nos données… Sans vous, l’avenir de la plus grande base de connaissances spatiales jamais créée est menacé !<br>
 
-Rejoignez l’Alliance et prenez part à l’aventure ultime. Accédez aux missions secrètes, explorez les merveilles du cosmos, et laissez votre empreinte dans l’histoire galactique !<br>
+Rejoignez l’Alliance et prenez part à l’aventure ultime. Accédez aux missions secrètes, explorez les merveilles du cosmos, et laissez votre empreinte dans l’histoire galactique !<br><br>
 
-Que la science soit avec vous… <br> Et ce pour toujours.</p>        
+Que la science soit avec vous… Et ce pour toujours.</p>        
   </div>  
 </div>
 
  <script src="{{ asset('js/loader.js') }}"></script>
  <script src="{{ asset('js/menu.js') }}"></script>
  <script src="{{ asset('js/starwars.js') }}"></script>
- <audio id="background-music" loop>
-    <source src="{{ asset('audio/starwars-theme.mp3') }}" type="audio/mp3">
-</audio>
+
+<script type="text/javascript" src="{{ asset('js/audio.js') }}"></script>
 
 </body>
 </html>
